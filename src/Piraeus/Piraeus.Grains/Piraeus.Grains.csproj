@@ -55,6 +55,9 @@
     <Reference Include="Microsoft.Azure.Amqp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Azure.Amqp.2.1.3\lib\net45\Microsoft.Azure.Amqp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\WebGateway\packages\Microsoft.Azure.DataLake.Store.1.1.6\lib\net452\Microsoft.Azure.DataLake.Store.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Devices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Azure.Devices.1.5.0\lib\net451\Microsoft.Azure.Devices.dll</HintPath>
     </Reference>
@@ -67,8 +70,14 @@
     <Reference Include="Microsoft.Azure.Documents.Client, Version=1.19.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Azure.DocumentDB.1.19.1\lib\net45\Microsoft.Azure.Documents.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.EventGrid, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\SiloHost\Piraeus.Silo\packages\Microsoft.Azure.EventGrid.1.2.0\lib\net452\Microsoft.Azure.EventGrid.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\WebGateway\packages\Microsoft.Azure.Management.DataLake.Store.2.2.1\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.CodeAnalysis.Common.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
@@ -97,11 +106,32 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Extensions.Logging.Abstractions.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.17.3.35304, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\TcpUdpGateway\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.17.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.17.3.35304, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\TcpUdpGateway\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.17.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Orleans\packages\Microsoft.IdentityModel.Tokens.5.1.4\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\WebGateway\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\SiloHost\Piraeus.Silo\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\WebGateway\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.3.3\lib\net461\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\WindowsAzure.ServiceBus.4.1.6\lib\net45\Microsoft.ServiceBus.dll</HintPath>
@@ -114,6 +144,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\Gateways\WebGateway\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="Orleans, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\Microsoft.Orleans.Core.1.5.2\lib\net461\Orleans.dll</HintPath>
@@ -147,6 +180,9 @@
     </Reference>
     <Reference Include="PInvoke.Windows.Core, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\PInvoke.Windows.Core.0.5.111\lib\net35\PInvoke.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\SiloHost\Piraeus.Silo\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -190,6 +226,7 @@
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\Nuget\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
@@ -284,16 +321,21 @@
     <Compile Include="Notifications\AuditRecord.cs" />
     <Compile Include="Notifications\AzureBlobStorageSink.cs" />
     <Compile Include="Notifications\AzureQueueStorageEventSink.cs" />
+    <Compile Include="Notifications\ConcurrentQueueManager.cs" />
     <Compile Include="Notifications\CosmosDbSink.cs" />
     <Compile Include="Notifications\DataLakeSink.cs" />
+    <Compile Include="Notifications\EventGridSink.cs" />
     <Compile Include="Notifications\EventHubSink.cs" />
     <Compile Include="Notifications\EventSink.cs" />
     <Compile Include="Notifications\EventSinkFactory.cs" />
     <Compile Include="Notifications\IoTHubSink.cs" />
     <Compile Include="Notifications\MessageDirectionType.cs" />
     <Compile Include="Notifications\RangeIncrementerExtension.cs" />
+    <Compile Include="Notifications\RedisExtensions.cs" />
+    <Compile Include="Notifications\RedisSink.cs" />
     <Compile Include="Notifications\RestWebServiceSink.cs" />
     <Compile Include="Notifications\ServiceBusTopicSink.cs" />
+    <Compile Include="Notifications\TaskQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="ResourceIdentityMismatchException.cs" />

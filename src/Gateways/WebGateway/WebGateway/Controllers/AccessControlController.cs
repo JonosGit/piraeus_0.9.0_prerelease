@@ -15,27 +15,36 @@ namespace WebGateway.Controllers
     {
         public AccessControlController()
         {
-            if(!Orleans.GrainClient.IsInitialized)
+            try
             {
-                bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
-                if(!dockerized)
+                if (!Orleans.GrainClient.IsInitialized)
                 {
-                    OrleansClientConfig.TryStart("AccessControlController");
-                }
-                else
-                {
-                    string hostname = ConfigurationManager.AppSettings["dnsHostEntry"];
-                    OrleansClientConfig.TryStart("AccessControlController", hostname);
+                    bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
+                    if (!dockerized)
+                    {
+                        OrleansClientConfig.TryStart("AccessControlController");
+                    }
+                    else
+                    {
+                        string hostname = System.Environment.GetEnvironmentVariable("GATEWAY_ORLEANS_SILO_DNS_HOSTNAME"); //ConfigurationManager.AppSettings["dnsHostEntry"];
+                        OrleansClientConfig.TryStart("AccessControlController", hostname);
+                    }
+
+                    Trace.TraceInformation("Orleans grain client initialized {0} is access control controller", Orleans.GrainClient.IsInitialized);
+                    Task task = ServiceIdentityConfig.Configure();
+                    Task.WhenAll(task);
                 }
 
-                Trace.TraceInformation("Orleans grain client initialized {0} is access control controller", Orleans.GrainClient.IsInitialized);
-                Task task = ServiceIdentityConfig.Configure();
-                Task.WhenAll(task);
+
+                bool started = OrleansClientConfig.TryStart("AccessControlController");
+                Console.WriteLine("Orleans client started {0} on Web gateway.", started);
             }
-            
-
-            bool started = OrleansClientConfig.TryStart("AccessControlController");
-            
+            catch(Exception ex)
+            {
+                Console.WriteLine("Orleans client on Web gateway failed with error {0}", ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Trace.TraceError("Orleans client error starting on Web gateway {0}", ex.Message);                
+            }
         }
 
         //[CaplAuthorize(PolicyId = "http://www.skunklab.io/api/management")]

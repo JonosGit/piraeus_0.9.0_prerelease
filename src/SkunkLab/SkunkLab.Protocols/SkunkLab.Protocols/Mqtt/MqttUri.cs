@@ -33,12 +33,15 @@ namespace SkunkLab.Protocols.Mqtt
             
             MessageId = GetSingleParameter(QueryStringConstants.MESSAGE_ID);
             ContentType = GetSingleParameter(QueryStringConstants.CONTENT_TYPE);
+            CacheKey = GetSingleParameter(QueryStringConstants.CACHE_KEY);
             Indexes = BuildIndexes(GetEnumerableParameters(QueryStringConstants.INDEX));
         }
 
         public string Resource { get; internal set; }
         public string ContentType { get; internal set; }
         public string MessageId { get; internal set; }
+
+        public string CacheKey { get; internal set; }
         public IEnumerable<KeyValuePair<string, string>> Indexes { get; internal set; }
 
         private IEnumerable<KeyValuePair<string, string>> items;

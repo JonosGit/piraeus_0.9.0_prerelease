@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Samples.Clients.Mqtt
 {
@@ -38,6 +39,8 @@ namespace Samples.Clients.Mqtt
         static bool sender;
         static bool commandLine;
         static HashSet<string> hashSet = new HashSet<string>();
+        static string pskKey;
+        static string pskString;
 
 
         static void Main(string[] args)
@@ -57,11 +60,14 @@ namespace Samples.Clients.Mqtt
                     jsonPayload = RandomString(990);
                 }
 
+                
                 SelectClientRole(); //select a role for the client
+                
             }
 
             string securityToken = GetSecurityToken();  //get the security token with a unique name
             SetResources(); //setup the resources for pub and observe based on role.
+            SelectPsk(); //optional PSK to use
 
             if (hostname == null)
             {
@@ -73,9 +79,9 @@ namespace Samples.Clients.Mqtt
             channel.OnStateChange += Channel_OnStateChange;
             channel.OnError += Channel_OnError;
             channel.OnClose += Channel_OnClose;
-                      
 
-            MqttConfig config = new MqttConfig();
+
+            MqttConfig config = new MqttConfig(150, 2, 1.5, 4, 100);
             client = new PiraeusMqttClient(config, channel);
             client.RegisterTopic(observeResource, ObserveResource);
             ConnectAckCode code = client.ConnectAsync("sessionId", "JWT", securityToken, 90).Result;
@@ -186,9 +192,10 @@ namespace Samples.Clients.Mqtt
 
 
 
-                    //string message = String.Format("{0} sent message {1}", clientName, index);
                     byte[] payload = Encoding.UTF8.GetBytes(payloadString);
-                    Task pubTask = client.PublishAsync(QualityOfServiceLevelType.AtMostOnce, publishResource, contentType, payload);                    
+                    //string cacheKey = String.Format("{0}{1}", "key", i);
+                    //Task pubTask = client.PublishAsync(QualityOfServiceLevelType.AtMostOnce, publishResource, contentType, payload, cacheKey);        
+                    Task pubTask = client.PublishAsync(QualityOfServiceLevelType.AtMostOnce, publishResource, contentType, payload);
                     Task.WhenAll(pubTask);
 
                     if (delayms > 0)
@@ -289,7 +296,7 @@ namespace Samples.Clients.Mqtt
             IPAddress address = null;
             bool isIP = IPAddress.TryParse(hostname, out address);
             string authority = isIP ? address.ToString() : String.IsNullOrEmpty(hostname) ? "localhost" : hostname;
-
+            
 
             if (num == 1)
             {
@@ -302,13 +309,23 @@ namespace Samples.Clients.Mqtt
 
             }
             else if (num == 2)
-            {
+            { 
+                if(string.IsNullOrEmpty(pskKey))
+                {
+                    return address == null ?  ChannelFactory.Create(true, authority, 8883, 2024, 4096, source.Token) :  ChannelFactory.Create(true, address, 8883, 1024, 2048, source.Token);
+                }
+                else
+                {
+                    address = GetAddress(authority);
+                    return ChannelFactory.Create(false, address, 8883, null, pskKey, Encoding.UTF8.GetBytes(pskString), 2048, 4096, source.Token);
+                    
+                }
+                //IChannel channel = ChannelFactory.Create(false, address, 8883, null, role == "A" ? "Key1" : "Key2", role == "A" ? b1 : b2, 1024, 2048, source.Token);
+                //IChannel channel = address == null ?
+                //                     ChannelFactory.Create(true, authority, 8883, 1024, 2048, source.Token) :
+                //                     ChannelFactory.Create(true, address, 8883, 1024, 2048, source.Token);
 
-                IChannel channel = address == null ?
-                                     ChannelFactory.Create(true, authority, 8883, 1024, 2048, source.Token) :
-                                     ChannelFactory.Create(true, address, 8883, 1024, 2048, source.Token);
-
-                return channel;
+                //return channel;
             }
             else if (num == 3)
             {
@@ -327,6 +344,22 @@ namespace Samples.Clients.Mqtt
             }
 
             return null;
+        }
+
+
+        private static IPAddress GetAddress(string authority)
+        {
+            IPAddress[] addresses = Dns.GetHostAddresses(authority);
+            foreach(IPAddress address in addresses)
+            {
+                if(address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    return address;
+                }
+            }
+
+            return null;
+               
         }
 
 
@@ -384,6 +417,7 @@ namespace Samples.Clients.Mqtt
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(e.Error.Message);
+            Console.WriteLine(e.Error.StackTrace);
             Console.ResetColor();
         }
 
@@ -406,6 +440,18 @@ namespace Samples.Clients.Mqtt
             }
 
             return builder.ToString();
+        }
+
+        private static void SelectPsk()
+        {
+            Console.Write("Use PSK (Y/N) ?  NOTE: Piraeus must be configured for PSK to use. ");
+            if(Console.ReadLine().ToLowerInvariant() == "y")
+            {
+                Console.Write("Enter PSK Key Name ? ");
+                pskKey = Console.ReadLine();
+                Console.Write("Enter PSK Key string ? ");
+                pskString = Console.ReadLine();
+            }
         }
 
     }

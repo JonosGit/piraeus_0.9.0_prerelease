@@ -7,6 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Web;
@@ -29,12 +30,15 @@ namespace Piraeus.Grains.Notifications
         private int arrayIndex;
         private int clientCount;
         private string connectionString;
+        private ConcurrentQueue<EventMessage> queue;
 
 
 
         public AzureBlobStorageSink(SubscriptionMetadata metadata)
             : base(metadata)
-        {          
+        {
+            queue = new ConcurrentQueue<EventMessage>();          
+
             auditor = new Auditor();
             key = metadata.SymmetricKey;
             uri = new Uri(metadata.NotifyAddress);
@@ -98,71 +102,87 @@ namespace Piraeus.Grains.Notifications
                     storageArray[i] = BlobStorage.New(connectionString, 2048, 102400);
                 }
             }
-        }        
+        }
+
+        
 
         public override async Task SendAsync(EventMessage message)
-        {
+        {            
             AuditRecord record = null;
             byte[] payload = null;
+            EventMessage msg = null;
+            queue.Enqueue(message);
             try
             {
-                arrayIndex = arrayIndex.RangeIncrement(0, clientCount - 1);
-
-                payload = GetPayload(message);
-                if (payload == null)
-                {
-                    Trace.TraceWarning("Subscription {0} could not write to blob storage sink because payload was either null or unknown protocol type.");
-                    return;
-                }
-
-                string filename = GetBlobName(message.ContentType);
-
-                if (blobType == "block")
-                {
-                    //await storageArray[arrayIndex].WriteBlockBlobAsync(container, filename, payload, message.ContentType).ContinueWith(async (a) => { await FaultTask(message.MessageId, container, filename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                    Task task = storageArray[arrayIndex].WriteBlockBlobAsync(container, filename, payload, message.ContentType);
-                    Task innerTask = task.ContinueWith(async (a) => { await FaultTask(message.MessageId, container, filename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                    await Task.WhenAll(task);
-
-                }
-                else if (blobType == "page")
-                {
-                    int pad = payload.Length % 512 != 0 ? 512 - payload.Length % 512 : 0;
-                    byte[] buffer = new byte[payload.Length + pad];
-                    Buffer.BlockCopy(payload, 0, buffer, 0, payload.Length);
-                    Task task = storageArray[arrayIndex].WritePageBlobAsync(container, filename, buffer, message.ContentType);
-                    Task innerTask = task.ContinueWith(async (a) => { await FaultTask(message.MessageId, container, filename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                    await Task.WhenAll(task);
-                    //await storageArray[arrayIndex].WritePageBlobAsync(container, filename, buffer, message.ContentType).ContinueWith(async (a) => { await FaultTask(message.MessageId, container, filename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                }
-                else
-                {
-                    if (appendFilename == null)
+                
+                while (!queue.IsEmpty)
+                {                    
+                    bool isdequeued = queue.TryDequeue(out msg);
+                    if (isdequeued)
                     {
-                        appendFilename = GetAppendFilename(message.ContentType);
-                    }
+                            arrayIndex = arrayIndex.RangeIncrement(0, clientCount - 1);
 
-                    //await storageArray[arrayIndex].WriteAppendBlobAsync(container, appendFilename, payload, message.ContentType).ContinueWith(async (a) => { await FaultTask(message.MessageId, container, appendFilename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                    Task task = storageArray[arrayIndex].WriteAppendBlobAsync(container, appendFilename, payload, message.ContentType);
-                    Task innerTask = task.ContinueWith(async (a) => { await FaultTask(message.MessageId, container, appendFilename, payload, message.ContentType, auditor.CanAudit && message.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
-                    await Task.WhenAll(task);
+                            payload = GetPayload(msg);
+                            if (payload == null)
+                            {
+                                Trace.TraceWarning("Subscription {0} could not write to blob storage sink because payload was either null or unknown protocol type.");
+                                return;
+                            }
 
+                            string filename = GetBlobName(msg.ContentType);
+
+                            if (blobType == "block")
+                            {
+                                Task task = storageArray[arrayIndex].WriteBlockBlobAsync(container, filename, payload, msg.ContentType);
+                                Task innerTask = task.ContinueWith(async (a) => { await FaultTask(msg.MessageId, container, filename, payload, msg.ContentType, auditor.CanAudit && msg.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
+                                await Task.WhenAll(task);
+
+                            }
+                            else if (blobType == "page")
+                            {
+                                int pad = payload.Length % 512 != 0 ? 512 - payload.Length % 512 : 0;
+                                byte[] buffer = new byte[payload.Length + pad];
+                                Buffer.BlockCopy(payload, 0, buffer, 0, payload.Length);
+                                Task task = storageArray[arrayIndex].WritePageBlobAsync(container, filename, buffer, msg.ContentType);
+                                Task innerTask = task.ContinueWith(async (a) => { await FaultTask(msg.MessageId, container, filename, payload, msg.ContentType, auditor.CanAudit && msg.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
+                                await Task.WhenAll(task);
+                            }
+                            else
+                            {
+                                if (appendFilename == null)
+                                {
+                                    appendFilename = GetAppendFilename(msg.ContentType);
+                                }
+
+                                byte[] suffix = Encoding.UTF8.GetBytes(Environment.NewLine);
+                                byte[] buffer = new byte[payload.Length + suffix.Length];
+                                Buffer.BlockCopy(payload, 0, buffer, 0, payload.Length);
+                                Buffer.BlockCopy(suffix, 0, buffer, payload.Length, suffix.Length);
+
+                                Task task = storageArray[arrayIndex].WriteAppendBlobAsync(container, appendFilename, buffer, msg.ContentType);
+                                Task innerTask = task.ContinueWith(async (a) => { await FaultTask(msg.MessageId, container, appendFilename, buffer, msg.ContentType, auditor.CanAudit && msg.Audit); }, TaskContinuationOptions.OnlyOnFaulted);
+                                await Task.WhenAll(task);
+
+                            }
+
+                            record = new AuditRecord(msg.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureBlob", "AzureBlob", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
+                    }                   
                 }
-
-                record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureBlob", "AzureBlob", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.TraceWarning("Initial blob write error {0}", ex.Message);
-                record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureBlob", "AzureBlob", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);
+                record = new AuditRecord(msg.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureBlob", "AzureBlob", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);
             }
             finally
             {
-                if (auditor.CanAudit && message.Audit && record != null)
+                if (auditor.CanAudit && msg.Audit && record != null)
                 {
                     await auditor.WriteAuditRecordAsync(record);
                 }
             }
+
+
         }
 
         private async Task FaultTask(string id, string container, string filename, byte[] payload, string contentType, bool canAudit)
@@ -175,7 +195,10 @@ namespace Piraeus.Grains.Notifications
 
                 if (blobType == "block")
                 {
-                    await storage.WriteBlockBlobAsync(container, filename, payload, contentType);
+                    string[] parts = filename.Split(new char[] { '.' });
+                    string path2 = parts.Length == 2 ? String.Format("{0}-R.{1}", parts[0], parts[1]) : String.Format("{0}-R", filename);
+
+                    await storage.WriteBlockBlobAsync(container, path2, payload, contentType);
                 }
                 else if (blobType == "page")
                 {
@@ -209,51 +232,6 @@ namespace Piraeus.Grains.Notifications
         }
 
         
-
-
-        //private async Task<bool> RetryAsync(EventMessage message)
-        //{
-        //    try
-        //    {
-                
-        //        BlobStorage storage = BlobStorage.New(connectionString, 2048, 102400);
-        //        string filename = GetBlobName(message.ContentType);
-        //        byte[] msg = GetPayload(message);
-
-        //        if (blobType == "block")
-        //        {
-        //            await storage.WriteBlockBlobAsync(container, filename, msg, message.ContentType);
-        //        }
-        //        else if (blobType == "page")
-        //        {
-        //            int pad = msg.Length % 512 != 0 ? 512 - msg.Length % 512 : 0;
-        //            byte[] buffer = new byte[msg.Length + pad];
-        //            Buffer.BlockCopy(msg, 0, buffer, 0, msg.Length);
-        //            await storage.WritePageBlobAsync(container, filename, buffer, message.ContentType);
-        //        }
-        //        else
-        //        {
-        //            await storage.WriteAppendBlobAsync(container, filename, msg, message.ContentType);
-        //        }
-
-                
-        //        Trace.TraceInformation("Blob retry complete.");
-        //        return true;
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Trace.TraceWarning("Blob retry failed.");
-        //        Trace.TraceError(ex.Message);
-        //        return false;
-        //    }
-
-        //}
-
-       
-
-
-
-
 
         private byte[] GetPayload(EventMessage message)
         {
@@ -300,8 +278,12 @@ namespace Piraeus.Grains.Notifications
                 suffix = "xml";
             }
 
-            string filename = DateTime.UtcNow.ToString("yyyy-MM-ddTHH-MM-ss-fffff");
+            string guid = Guid.NewGuid().ToString();
+            string filename = String.Format("{0}T{1}", guid, DateTime.UtcNow.ToString("HH-MM-ss-fffff"));
             return suffix == null ? filename : String.Format("{0}.{1}", filename, suffix);
         }
+
+
+
     }
 }

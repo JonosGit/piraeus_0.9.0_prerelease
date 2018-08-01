@@ -40,6 +40,11 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Pr
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Protocols.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Protocols.pdb
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Security.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Net.Http.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Web.Http.dll
@@ -52,7 +57,7 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Pr
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Web.Http.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\Microsoft.IdentityModel.Logging.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\System.Net.Http.Formatting.xml
-C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csprojResolveAssemblyReference.cache
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csprojAssemblyReference.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csproj.CoreCompileInputs.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.csproj.CopyComplete
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\obj\Debug\SkunkLab.Protocols.dll

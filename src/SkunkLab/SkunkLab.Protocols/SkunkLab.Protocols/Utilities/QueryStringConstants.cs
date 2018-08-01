@@ -9,6 +9,7 @@
         public const string SUBSCRIPTION = "sub";
         public const string CONTENT_TYPE = "ct";
         public const string TOKEN_TYPE = "tt";
+        public const string CACHE_KEY = "cache";
 
     }
 }

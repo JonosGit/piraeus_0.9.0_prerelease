@@ -19,7 +19,6 @@ namespace Piraeus.Grains.Notifications
     public class CosmosDBSink : EventSink
     {
         private Uri uri;
-        //private DocumentClient client;
         private Uri documentDBUri;
         private string databaseId;
         private string symmetricKey;
@@ -27,7 +26,7 @@ namespace Piraeus.Grains.Notifications
         private Database database;
         private DocumentCollection collection;
         private Auditor auditor;
-        private ConcurrentQueue<byte[]> queue;
+        private ConcurrentQueue<EventMessage> queue;
         private int delay;
         private int clientCount;
         private DocumentClient[] storageArray;
@@ -36,7 +35,7 @@ namespace Piraeus.Grains.Notifications
         public CosmosDBSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
-            queue = new ConcurrentQueue<byte[]>();
+            queue = new ConcurrentQueue<EventMessage>();
             auditor = new Auditor();
             uri = new Uri(metadata.NotifyAddress);
             string docDBUri = String.Format("https://{0}", uri.Authority);
@@ -70,9 +69,7 @@ namespace Piraeus.Grains.Notifications
 
             Task<DocumentCollection> coltask = GetCollectionAsync(database.SelfLink, collectionId);
             Task.WaitAll(coltask);
-            collection = coltask.Result;           
-
-            //client = new DocumentClient(documentDBUri, symmetricKey);
+            collection = coltask.Result; 
         }
 
        
@@ -82,82 +79,63 @@ namespace Piraeus.Grains.Notifications
         {
             AuditRecord record = null;
             byte[] payload = null;
+            EventMessage msg = null;
 
-            byte[] msg = GetPayload(message);
+            queue.Enqueue(message);
+            //byte[] doc = GetPayload(message);
 
-            if (msg != null)
-            {
-                queue.Enqueue(msg);
-            }
+            //if (doc != null)
+            //{
+            //    queue.Enqueue(doc);
+            //}
 
             try
             {
                 while (!queue.IsEmpty)
                 {
                     arrayIndex = arrayIndex.RangeIncrement(0, clientCount - 1);
-                    queue.TryDequeue(out payload);
+                    bool isdequeued = queue.TryDequeue(out msg);
 
-                    //payload = GetPayload(message);
-                    if (payload == null)
+                    if (isdequeued)
                     {
-                        Trace.TraceWarning("Subscription {0} could not write to CosmosDB sink because payload was either null or unknown protocol type.");
-                        return;
-                    }
-
-                    //if (client == null)
-                    //{
-                    //    client = new DocumentClient(documentDBUri, symmetricKey);
-                    //}
-
-                    //if (database == null)
-                    //{
-                    //    database = await GetDatabaseAsync();
-                    //}
-
-                    //if (collection == null)
-                    //{
-                    //    collection = await GetCollectionAsync(database.SelfLink, collectionId);
-                    //}
-
-                    using (MemoryStream stream = new MemoryStream(payload))
-                    {
-                        stream.Position = 0;
-                        if (message.ContentType.Contains("json"))
+                        payload = GetPayload(message);
+                        if (payload == null)
                         {
-
-                            await storageArray[arrayIndex].CreateDocumentAsync(collection.SelfLink, Microsoft.Azure.Documents.Resource.LoadFrom<Document>(stream));
-                            //await client.CreateDocumentAsync(collection.SelfLink, Microsoft.Azure.Documents.Resource.LoadFrom<Document>(stream));
+                            Trace.TraceWarning("Subscription {0} could not write to CosmosDB sink because payload was either null or unknown protocol type.");
+                            continue;
                         }
-                        else
+
+                        using (MemoryStream stream = new MemoryStream(payload))
                         {
-                            dynamic documentWithAttachment = new
+                            stream.Position = 0;
+                            if (message.ContentType.Contains("json"))
                             {
-                                Id = Guid.NewGuid().ToString(),
-                                Timestamp = DateTime.UtcNow
-                            };
+                                await storageArray[arrayIndex].CreateDocumentAsync(collection.SelfLink, Microsoft.Azure.Documents.Resource.LoadFrom<Document>(stream));
+                            }
+                            else
+                            {
+                                dynamic documentWithAttachment = new
+                                {
+                                    Id = Guid.NewGuid().ToString(),
+                                    Timestamp = DateTime.UtcNow
+                                };
 
-                            Document doc = await storageArray[arrayIndex].CreateDocumentAsync(collection.SelfLink, documentWithAttachment);
-                            //Document doc = await client.CreateDocumentAsync(collection.SelfLink, documentWithAttachment);
-                            string slug = GetSlug(documentWithAttachment.Id, message.ContentType);
-                            //await client.CreateAttachmentAsync(doc.AttachmentsLink, stream, new MediaOptions { ContentType = message.ContentType, Slug = slug });
-                            await storageArray[arrayIndex].CreateAttachmentAsync(doc.AttachmentsLink, stream, new MediaOptions { ContentType = message.ContentType, Slug = slug });
+                                Document doc = await storageArray[arrayIndex].CreateDocumentAsync(collection.SelfLink, documentWithAttachment);
+                                string slug = GetSlug(documentWithAttachment.Id, message.ContentType);
+                                await storageArray[arrayIndex].CreateAttachmentAsync(doc.AttachmentsLink, stream, new MediaOptions { ContentType = message.ContentType, Slug = slug });
+                            }
+                        }
 
+                        if (auditor.CanAudit && message.Audit)
+                        {
+                            record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "CosmosDB", "CosmoDB", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
                         }
                     }
-
-                    if (auditor.CanAudit && message.Audit)
-                    {
-                        record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "CosmosDB", "CosmoDB", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
-                    }
-                }
-
-                await Task.Delay(delay);
-                
+                }                
             }
             catch(Exception ex)
             {
-                record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "CosmosDB", "CosmosDB", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);
-                throw;
+                record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "CosmosDB", "CosmosDB", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);                
             }
             finally
             {

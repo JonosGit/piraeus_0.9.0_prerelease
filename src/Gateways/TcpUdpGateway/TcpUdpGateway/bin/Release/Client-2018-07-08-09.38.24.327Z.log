@@ -1,0 +1,388 @@
+[2018-07-08 09:38:29.531 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Recursively searching for assemblies in C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release...	
+[2018-07-08 09:38:29.694 GMT     1	INFO   	100000	AssemblyLoader.Client	]	C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DocumentDB.Spatial.Sql.dll is not compatible with current process, loading is skipped.	
+[2018-07-08 09:38:29.754 GMT     1	INFO   	100000	AssemblyLoader.Client	]	C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Documents.ServiceInterop.dll is not compatible with current process, loading is skipped.	
+[2018-07-08 09:38:34.591 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\BouncyCastle.Crypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.604 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Capl.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.604 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DocumentDB.Spatial.Sql.dll
+	* The file C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DocumentDB.Spatial.Sql.dll does not contain any CLR metadata, probably it is a native file.	
+[2018-07-08 09:38:34.621 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Buffers.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.660 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Codecs.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.665 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Codecs.Mqtt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.684 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Common.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.690 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Handlers.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.704 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\DotNetty.Transport.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.732 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Amqp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.744 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.DataLake.Store.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.790 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Devices.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.820 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Devices.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.843 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Devices.Shared.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.968 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Documents.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.972 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Documents.ServiceInterop.dll
+	* The file C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.Documents.ServiceInterop.dll does not contain any CLR metadata, probably it is a native file.	
+[2018-07-08 09:38:34.977 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.EventGrid.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.981 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.KeyVault.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:34.986 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.KeyVault.Cryptography.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.015 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.KeyVault.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.020 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.KeyVault.Extensions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.022 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Azure.KeyVault.WebKey.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.543 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.CodeAnalysis.CSharp.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.763 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.CodeAnalysis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.796 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Data.Edm.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.839 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Data.OData.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.864 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Data.Services.Client.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.868 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.920 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Extensions.DependencyInjection.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.927 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.929 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Extensions.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.993 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:35.997 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.IdentityModel.Logging.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.001 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.IdentityModel.Tokens.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.010 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Owin.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.016 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.029 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Rest.ClientRuntime.Azure.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.035 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Rest.ClientRuntime.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.338 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.ServiceBus.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.342 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.Win32.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.399 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Microsoft.WindowsAzure.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.439 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Newtonsoft.Json.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.480 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\NLog.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.483 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Orleans.dll
+	* Assembly filename is excluded.	
+[2018-07-08 09:38:36.486 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\OrleansCodeGenerator.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.498 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Owin.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.506 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\PCLCrypto.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.511 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\PInvoke.BCrypt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.521 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\PInvoke.Kernel32.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.527 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\PInvoke.NCrypt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.531 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\PInvoke.Windows.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.541 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Piraeus.Adapters.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.546 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Piraeus.Configuration.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.549 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Piraeus.Core.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.553 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Piraeus.GrainInterfaces.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.570 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Piraeus.Grains.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.583 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Channels.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.587 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Diagnostics.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.591 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Listeners.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.601 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Protocols.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.604 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Security.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.613 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\SkunkLab.Storage.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.655 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\StackExchange.Redis.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.659 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.AppContext.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.682 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Collections.Immutable.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.687 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Console.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.703 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Diagnostics.DiagnosticSource.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.707 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Diagnostics.FileVersionInfo.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.710 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Diagnostics.StackTrace.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.713 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Globalization.Calendars.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.720 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.IdentityModel.Tokens.Jwt.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.725 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.IO.Compression.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.728 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.IO.Compression.ZipFile.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.731 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.IO.FileSystem.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.733 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.IO.FileSystem.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.746 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Net.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.759 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Net.Http.Formatting.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.762 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Net.Sockets.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.805 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Reflection.Metadata.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.809 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.811 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.814 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Security.Cryptography.Algorithms.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.819 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Security.Cryptography.Encoding.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.824 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Security.Cryptography.Primitives.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.826 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Security.Cryptography.X509Certificates.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.836 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Spatial.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.841 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Text.Encoding.CodePages.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.843 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Threading.Thread.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.848 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.ValueTuple.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.882 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Web.Http.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.886 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Xml.ReaderWriter.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.888 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Xml.XmlDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.889 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Xml.XPath.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.892 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\System.Xml.XPath.XDocument.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.897 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Validation.dll
+	* Assembly contains no types assignable from Orleans.Providers.IProvider.	
+[2018-07-08 09:38:36.899 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\de\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.900 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\de\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.902 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\de\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.907 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\de\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.909 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\es\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.910 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\es\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.912 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\es\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.913 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\es\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.918 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\fr\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.920 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\fr\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.921 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\fr\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.923 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\fr\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.925 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\it\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.930 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\it\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.932 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\it\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.934 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\it\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.935 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ja\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.937 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ja\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.943 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ja\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.944 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ja\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.946 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ko\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.947 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ko\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.949 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ko\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.954 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ko\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.956 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ru\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.959 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ru\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.960 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ru\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.966 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\ru\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.970 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hans\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.975 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hans\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.977 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.979 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hans\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.981 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hant\Microsoft.Data.Edm.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.983 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hant\Microsoft.Data.OData.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.988 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.991 GMT     1	INFO   	100000	AssemblyLoader.Client	]	User assembly ignored: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\zh-Hant\System.Spatial.resources.dll
+	* Assembly filename indicates that it is a resource assembly.	
+[2018-07-08 09:38:36.993 GMT     1	INFO   	100000	AssemblyLoader.Client	]	Loading assembly C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\OrleansProviders.dll...	
+[2018-07-08 09:38:37.065 GMT     1	INFO   	100000	AssemblyLoader.Client	]	1 assemblies loaded.	
+[2018-07-08 09:38:37.394 GMT     1	INFO   	100313	OutsideRuntimeClient	]	---------- Initializing OutsideRuntimeClient on MININT-2T87D76 at 172.21.48.1 Client Id = *cli/e765098c ----------	
+[2018-07-08 09:38:37.413 GMT     1	INFO   	100314	OutsideRuntimeClient	]	---------- Starting OutsideRuntimeClient with runtime Version='1.5.2.0 (Release).' in AppDomain=<AppDomain.Id=1, AppDomain.FriendlyName=TcpUdpGateway.exe> Config= 
+ Platform version info:
+   Orleans version: 1.5.2.0 (Release).
+   .NET version: 4.0.30319.42000
+   OS version: Microsoft Windows NT 6.2.9200.0
+   App config file: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\TcpUdpGateway.exe.Config
+   GC Type=Server GCLatencyMode=Batch
+   Host: MININT-2T87D76
+   Processor Count: 4
+Client Configuration:
+   Config File Name: 
+   Start time: 2018-07-08 09:38:37.404 GMT
+   Gateway Provider: Config
+   Gateways[1]:
+      127.0.0.1:40000
+   Preferred Gateway Index: -1
+   GatewayListRefreshPeriod: 00:01:00
+   Preferred Address Family: InterNetwork
+   DNS Host Name: MININT-2T87D76
+   Client Name: Client
+   Tracing: 
+     Default Trace Level: Info
+     TraceLevelOverrides: None
+     Trace to Console: True
+     Trace File Name: C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\TcpUdpGateway\bin\Release\Client-2018-07-08-09.38.24.327Z.log
+     LargeMessageWarningThreshold: 85000
+     PropagateActivityId: False
+     BulkMessageLimit: 5
+   Statistics: 
+     MetricsTableWriteInterval: 00:00:30
+     PerfCounterWriteInterval: -00:00:00.0010000
+     LogWriteInterval: 00:05:00
+     WriteLogStatisticsToTable: True
+     StatisticsCollectionLevel: Info
+   Messaging:
+       Response timeout: 00:30:00
+       Maximum resend count: 0
+       Resend On Timeout: False
+       Maximum Socket Age: 10675199.02:48:05.4775807
+       Drop Expired Messages: True
+       Client Sender Buckets: 8192
+       Buffer Pool Buffer Size: 4096
+       Buffer Pool Max Size: 10000
+       Buffer Pool Preallocation Size: 250
+       Fallback serializer: 
+   .NET: 
+       .NET thread pool sizes - Min: Worker Threads=4 Completion Port Threads=4
+       .NET thread pool sizes - Max: Worker Threads=2047 Completion Port Threads=1000
+   Providers:
+       No providers configured.
+	
+[2018-07-08 09:38:37.529 GMT     4	INFO   	101309	Messaging.GatewayManager	]	Found 1 knownGateways from Gateway listProvider [gwy.tcp://127.0.0.1:40000/0]	
+[2018-07-08 09:38:37.606 GMT     4	INFO   	100908	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.21.48.1:0]	Connected to gateway at address gwy.tcp://127.0.0.1:40000/0 on trial 0.	
+[2018-07-08 09:38:37.665 GMT     9	INFO   	100000	Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0	172.21.48.1:0]	Starting AsyncAgent Messaging.GatewayClientReceiver/gwy.tcp://127.0.0.1:40000/0 on managed thread 9	
+[2018-07-08 09:38:37.679 GMT     8	INFO   	100000	Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0	172.21.48.1:0]	Starting AsyncAgent Messaging.GatewayConnection/GatewayClientSender_gwy.tcp://127.0.0.1:40000/0 on managed thread 8	
+[2018-07-08 09:38:37.963 GMT     7	INFO   	100929	OutsideRuntimeClient	172.21.48.1:0]	---------- Started OutsideRuntimeClient with Global Client ID: C172.21.48.1:0:-268738717*cli/e765098c@1ca938a3, client GUID ID: *cli/e765098c	
+[2018-07-08 09:39:37.608 GMT     4	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:38:37 AM	
+[2018-07-08 09:40:37.670 GMT     4	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:39:37 AM	
+[2018-07-08 09:41:37.684 GMT     4	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:40:37 AM	
+[2018-07-08 09:42:37.696 GMT     4	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:41:37 AM	
+[2018-07-08 09:43:37.714 GMT     4	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:42:37 AM	
+[2018-07-08 09:43:38.001 GMT    13	INFO   	100704	ClientLogStatistics	172.21.48.1:0]	Statistics: ^^^
+Client.ConnectedGatewayCount=1
+Messaging.Expired.AtDispatch.Current=0
+Messaging.Expired.AtInvoke.Current=0
+Messaging.Expired.AtReceive.Current=0
+Messaging.Expired.AtRespond.Current=0
+Messaging.Expired.AtSend.Current=0
+Messaging.Received.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Received.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Received.Bytes.Header.Current=453
+Messaging.Received.Bytes.Total.Current=3770
+Messaging.Received.Direction.OneWay.Current=0
+Messaging.Received.Direction.Request.Current=0
+Messaging.Received.Direction.Response.Current=2
+Messaging.Received.Messages.From.S127.0.0.1:40000:0.Current=2
+Messaging.Received.Messages.Total.Current=2
+Messaging.Received.MessageSizeHistogram.Bytes=[256:511]=1, [2048:4095]=1, 
+Messaging.Rerouted.OneWay.Current=0
+Messaging.Rerouted.Request.Current=0
+Messaging.Rerouted.Response.Current=0
+Messaging.Sent.BatchSize.PerSocketDirection.ClientToGateway=0.000
+Messaging.Sent.BatchSizeBytesHistogram.Bytes.PerSocketDirection.ClientToGateway=
+Messaging.Sent.Bytes.Header.Current=453
+Messaging.Sent.Bytes.Total.Current=526
+Messaging.Sent.Direction.OneWay.Current=0
+Messaging.Sent.Direction.Request.Current=2
+Messaging.Sent.Direction.Response.Current=0
+Messaging.Sent.Messages.To.S127.0.0.1:40000:0.Current=2
+Messaging.Sent.Messages.Total.Current=2
+Messaging.Sent.MessageSizeHistogram.Bytes=[128:255]=1, [256:511]=1, 
+Networking.Sockets.ClientToGateway.Duplex.Closed.Current=0
+Networking.Sockets.ClientToGateway.Duplex.Opened.Current=1
+Runtime.CpuUsage=37.752
+Runtime.DOT.NET.ThreadPool.InUse.CompletionPortThreads=0
+Runtime.DOT.NET.ThreadPool.InUse.WorkerThreads=2
+Runtime.GC.AllocatedBytesInKbPerSec=0.000
+Runtime.GC.GenCollectonCount=gen0=3, gen1=2, gen2=1
+Runtime.GC.GenSizesKb=gen0=66074.48, gen1=3408.59, gen2=4429.47
+Runtime.GC.LargeObjectHeapSizeKb=10257.890
+Runtime.GC.NumberOfInducedGCs=0.000
+Runtime.GC.PercentOfTimeInGC=0.008
+Runtime.GC.PromotedFinalizationMemoryFromGen0Kb=0.809
+Runtime.GC.PromotedMemoryFromGen1Kb=4424.574
+Runtime.GC.TotalMemoryKb=32045
+Runtime.Memory.AvailableMemoryMb=6588
+Runtime.Memory.TotalPhysicalMemoryMb=16384
+Runtime.Threads.AsynchAgent.Messaging.GatewayClientReceiver.Current=1
+Runtime.Threads.AsynchAgent.Messaging.GatewayConnection.Current=1
+Runtime.Threads.AsynchAgent.TotalThreadsCreated.Current=2
+Serialization.BufferPool.AllocatedBuffers.Current=250
+Serialization.BufferPool.BuffersInPool=217
+Serialization.BufferPool.CheckedInBuffers.Current=257
+Serialization.BufferPool.CheckedOutBuffers.Current=290
+Serialization.BufferPool.DroppedBuffers.Current=0
+Serialization.BufferPool.DroppedTooLargeBuffers.Current=0
+Serialization.BufferPool.InUse.AllocatedAndNotInPool_Buffers=33
+Serialization.BufferPool.InUse.CheckedOutAndNotCheckedIn_Buffers=33
+	
+[2018-07-08 09:44:37.716 GMT    13	INFO   	101309	Messaging.GatewayManager	172.21.48.1:0]	Refreshed the live Gateway list. Found 1 gateways from Gateway listProvider: [gwy.tcp://127.0.0.1:40000/0]. Picked only known live out of them. Now has 1 live Gateways: [gwy.tcp://127.0.0.1:40000/0]. Previous refresh time was = 7/8/2018 9:43:37 AM	

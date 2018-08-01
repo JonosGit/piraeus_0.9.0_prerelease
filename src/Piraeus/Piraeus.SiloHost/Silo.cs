@@ -41,7 +41,7 @@ namespace Piraeus.SiloHost
                 config.Globals.LivenessEnabled = true;
                 config.Globals.LivenessType = GlobalConfiguration.LivenessProviderType.AzureTable;               
                 config.Globals.ReminderServiceType = GlobalConfiguration.ReminderServiceProviderType.AzureTable;
-                config.Globals.ResponseTimeout = TimeSpan.FromSeconds(180.0);
+                config.Globals.ResponseTimeout = TimeSpan.FromSeconds(300.0);
                 config.Globals.ClientSenderBuckets = 32768;
                 
 
@@ -64,8 +64,10 @@ namespace Piraeus.SiloHost
                 Console.WriteLine("ProxyGatewayEndpoint {0}:{1}", config.Defaults.ProxyGatewayEndpoint.Address.ToString(), config.Defaults.ProxyGatewayEndpoint.Port);
                 Console.WriteLine("SiloName {0}", hostname);
 
-                string factor = System.Environment.GetEnvironmentVariable("SERVICEPOINT_CORE_FACTOR");
-                
+
+                string factor = string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("SERVICEPOINT_CORE_FACTOR")) ? "24" : System.Environment.GetEnvironmentVariable("SERVICEPOINT_CORE_FACTOR");
+
+
                 ServicePointManager.DefaultConnectionLimit = Convert.ToInt32(factor)  * Environment.ProcessorCount;
                 ServicePointManager.UseNagleAlgorithm = false;
                
@@ -101,6 +103,7 @@ namespace Piraeus.SiloHost
 
 
             var siloHost = new Orleans.Runtime.Host.SiloHost(hostname, config);
+           
             Console.WriteLine("Silo host initialized.");
 
             hostWrapper = new OrleansHostWrapper(config, args);

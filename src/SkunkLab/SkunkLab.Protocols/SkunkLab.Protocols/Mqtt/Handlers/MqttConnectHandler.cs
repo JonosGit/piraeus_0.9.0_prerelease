@@ -21,7 +21,10 @@ namespace SkunkLab.Protocols.Mqtt.Handlers
                 return null;
             }
 
+            Session.IncrementKeepAlive();
+
             ConnectMessage msg = Message as ConnectMessage;
+            Session.KeepAliveSeconds = Convert.ToDouble(msg.KeepAlive);
 
             //wrong protocol version
             if(msg.ProtocolVersion != 4)

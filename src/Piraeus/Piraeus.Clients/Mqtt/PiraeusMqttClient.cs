@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
 using SkunkLab.Protocols;
@@ -27,6 +28,7 @@ namespace Piraeus.Clients.Mqtt
             this.dispatcher = dispatcher != null ? dispatcher : new GenericMqttDispatcher();
             timeoutMilliseconds = config.MaxTransmitSpan.TotalMilliseconds;
             session = new MqttSession(config);
+            session.OnKeepAlive += Session_OnKeepAlive;
             session.OnConnect += Session_OnConnect;
             session.OnDisconnect += Session_OnDisconnect;
             session.OnRetry += Session_OnRetry;
@@ -89,11 +91,38 @@ namespace Piraeus.Clients.Mqtt
 
             if (!channel.IsConnected)
             {
-                await channel.OpenAsync();
+                //if (channel.RequireBlocking)
+                //{
+                //    Task t0 = channel.OpenAsync().ContinueWith((a) =>
+                //    {
+                //        Receive(channel);
+
+                //    }, TaskContinuationOptions.NotOnFaulted).ContinueWith((a) =>
+                //     {
+                //         Task tx = channel.SendAsync(msg.Encode());
+                //         Task.WaitAll(tx);
+
+                //     }, TaskContinuationOptions.NotOnFaulted);
+
+                //    Task.WaitAll(t0);
+                //}
+                //else
+                //{
+                    await channel.OpenAsync();
+                //}
+                
                 Receive(channel);
             }
 
-            await channel.SendAsync(msg.Encode());
+            //if (channel.RequireBlocking)
+            //{
+            //    //Task t1 = channel.SendAsync(msg.Encode());
+            //    //Task.WaitAll(t1);
+            //}
+            //else
+            //{
+                await channel.SendAsync(msg.Encode());
+            //}
 
             DateTime expiry = DateTime.UtcNow.AddMilliseconds(timeoutMilliseconds);
             while(!code.HasValue)
@@ -121,7 +150,21 @@ namespace Piraeus.Clients.Mqtt
         public async Task DisconnectAsync()
         {
             DisconnectMessage msg = new DisconnectMessage();
-            await channel.SendAsync(msg.Encode());
+
+            //if (channel.RequireBlocking)
+            //{
+            //    Task t0 = channel.SendAsync(msg.Encode());
+            //    Task.WaitAll(t0);
+
+            //    await Task.Delay(2000);
+            //    Task t1 = channel.CloseAsync();
+            //    Task.WaitAll(t1);
+            //}
+            //else
+            //{
+                await channel.SendAsync(msg.Encode());
+                await channel.CloseAsync();
+            //}
         }
 
         /// <summary>
@@ -134,10 +177,25 @@ namespace Piraeus.Clients.Mqtt
         /// <param name="indexes"></param>
         /// <param name="messageId"></param>
         /// <returns></returns>
-        public async Task PublishAsync(QualityOfServiceLevelType qos, string topicUriString, string contentType, byte[] data, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
+        public async Task PublishAsync(QualityOfServiceLevelType qos, string topicUriString, string contentType, byte[] data, string cacheKey = null, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
         {
+            string indexString = GetIndexString(indexes);
+            
             UriBuilder builder = new UriBuilder(topicUriString);
-            builder.Query = messageId == null ? String.Format("{0}={1}", SkunkLab.Protocols.Utilities.QueryStringConstants.CONTENT_TYPE, contentType) : String.Format("{0}={1}&{2}={3}", QueryStringConstants.CONTENT_TYPE, contentType, QueryStringConstants.MESSAGE_ID, messageId);
+            string queryString = messageId == null ? String.Format("{0}={1}", SkunkLab.Protocols.Utilities.QueryStringConstants.CONTENT_TYPE, contentType) : String.Format("{0}={1}&{2}={3}", QueryStringConstants.CONTENT_TYPE, contentType, QueryStringConstants.MESSAGE_ID, messageId);
+
+            if(!string.IsNullOrEmpty(cacheKey))
+            {
+                queryString = queryString + String.Format("&{0}={1}", QueryStringConstants.CACHE_KEY, cacheKey);
+            }
+
+            if (!string.IsNullOrEmpty(indexString))
+            {
+                queryString = queryString + "&" + indexString;
+            }
+
+
+            builder.Query = queryString;
             
             PublishMessage msg = new PublishMessage(false, qos, false, 0, builder.ToString(), data);
             if(qos != QualityOfServiceLevelType.AtMostOnce)
@@ -151,9 +209,18 @@ namespace Piraeus.Clients.Mqtt
             while (queue.Count > 0)
             {
                 byte[] message = queue.Dequeue();
-                Task t = channel.SendAsync(message);
-                await Task.WhenAll(t);
+
+                if (channel.RequireBlocking)
+                {
+                    Task t = channel.SendAsync(message);
+                    Task.WaitAll(t);
+                }
+                else
+                {
+                    await channel.SendAsync(message);
+                }
             }
+
         }
 
         /// <summary>
@@ -169,7 +236,17 @@ namespace Piraeus.Clients.Mqtt
             dict.Add(topicUriString, qos);
             dispatcher.Register(topicUriString, action);
             SubscribeMessage msg = new SubscribeMessage(session.NewId(), dict);
-            await channel.SendAsync(msg.Encode());
+
+
+            if (channel.RequireBlocking)
+            {
+                Task t = channel.SendAsync(msg.Encode());
+                Task.WaitAll(t);
+            }
+            else
+            {
+                await channel.SendAsync(msg.Encode());
+            }
         }
 
         /// <summary>
@@ -188,7 +265,16 @@ namespace Piraeus.Clients.Mqtt
             }
             
             SubscribeMessage msg = new SubscribeMessage(session.NewId(), dict);
-            await channel.SendAsync(msg.Encode());
+
+            if (channel.RequireBlocking)
+            {
+                Task t = channel.SendAsync(msg.Encode());
+                Task.WaitAll(t);
+            }
+            else
+            {
+                await channel.SendAsync(msg.Encode());
+            }
         }
 
         /// <summary>
@@ -198,8 +284,18 @@ namespace Piraeus.Clients.Mqtt
         /// <returns></returns>
         public async Task UnsubscribeAsync(string topic)
         {
-            UnsubscribeMessage msg = new UnsubscribeMessage(session.NewId(), new string[] { topic });           
-            await channel.SendAsync(msg.Encode());
+            UnsubscribeMessage msg = new UnsubscribeMessage(session.NewId(), new string[] { topic });
+
+            if (channel.RequireBlocking)
+            {
+                Task t = channel.SendAsync(msg.Encode());
+                Task.WaitAll(t);
+            }
+            else
+            {
+                await channel.SendAsync(msg.Encode());
+            }
+
             dispatcher.Unregister(topic);
         }
 
@@ -211,7 +307,16 @@ namespace Piraeus.Clients.Mqtt
         public async Task UnsubscribeAsync(IEnumerable<string> topics)
         {
             UnsubscribeMessage msg = new UnsubscribeMessage(session.NewId(), topics);
-            await channel.SendAsync(msg.Encode());
+
+            if (channel.RequireBlocking)
+            {
+                Task t = channel.SendAsync(msg.Encode());
+                Task.WaitAll(t);
+            }
+            else
+            {
+                await channel.SendAsync(msg.Encode());
+            }
 
             foreach(var topic in topics)
             {
@@ -231,10 +336,45 @@ namespace Piraeus.Clients.Mqtt
 
             if(response != null)
             {
-                Task task2 = channel.SendAsync(response.Encode());
-                Task.WhenAll(task2);
+                //if (channel.RequireBlocking)
+                //{
+                //    Task t = channel.SendAsync(response.Encode());
+                //    Task.WaitAll(t);
+                //}
+                //else
+                //{
+                    Task task2 = channel.SendAsync(response.Encode());
+                    Task.WhenAll(task2);
+                //}
             }
         }
+
+
+        private string GetIndexString(IEnumerable<KeyValuePair<string, string>> indexes = null)
+        {
+            if(indexes == null)
+            {
+                return null;
+            }
+
+            StringBuilder builder = new StringBuilder();
+            foreach(KeyValuePair<string,string> kvp in indexes)
+            {
+                if(builder.ToString().Length == 0)
+                {
+                    builder.Append(String.Format("i={0};{1}", kvp.Key, kvp.Value));
+                }
+                else
+                {
+                    builder.Append(String.Format("&i={0};{1}", kvp.Key, kvp.Value));
+                }
+            }
+
+            return builder.ToString();
+
+
+        }
+       
 
         private void Channel_OnError(object sender, ChannelErrorEventArgs args)
         {
@@ -244,6 +384,7 @@ namespace Piraeus.Clients.Mqtt
         private void Channel_OnClose(object sender, ChannelCloseEventArgs args)
         {
             code = null;
+            this.channel.Dispose();
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs args)
@@ -271,6 +412,33 @@ namespace Piraeus.Clients.Mqtt
             Task task = channel.CloseAsync();
             Task.WaitAll(task);
             channel.Dispose();
+        }
+
+       
+        private void Session_OnKeepAlive(object sender, MqttMessageEventArgs args)
+        {
+            try
+            {               
+                Task task = channel.SendAsync(args.Message.Encode());
+                if (channel.RequireBlocking)
+                {
+
+                    Task.WaitAll(task);
+                }
+                else
+                {
+                    Task.WhenAll(task);
+                }
+
+                Console.WriteLine("Ping request sent");
+            }
+            catch(Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException.Message);
+                Console.ResetColor();
+            }
         }
 
         #endregion

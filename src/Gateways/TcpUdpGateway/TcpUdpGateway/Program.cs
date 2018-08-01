@@ -151,7 +151,8 @@ namespace TcpUdpGateway
         static string GetLocalHostName()
         {
             bool dockerized = Convert.ToBoolean(ConfigurationManager.AppSettings["dockerize"]);
-            return dockerized ? System.Environment.GetEnvironmentVariable("GATEWAY_TCP_SERVER_DNS_HOSTNAME") : "localhost";
+            //return dockerized ? System.Environment.GetEnvironmentVariable("GATEWAY_TCP_SERVER_DNS_HOSTNAME") : "localhost";
+            return dockerized ? System.Net.Dns.GetHostName() : "localhost";
         }
         
         static void InitOrleansClient()

@@ -13,6 +13,14 @@ namespace Piraeus.Clients.Coap
 
         private CoapClientRequestRegistry registry;
         private bool disposedValue;
+        private string localIdentity;
+        public string Identity
+        {
+            set
+            {
+                localIdentity = value;
+            }
+        }
 
         public Task<CoapMessage> PostAsync(CoapMessage message)
         {

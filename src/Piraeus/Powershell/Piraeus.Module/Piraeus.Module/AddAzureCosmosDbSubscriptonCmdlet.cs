@@ -16,8 +16,8 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
-        [Parameter(HelpMessage = "Host name of CosmosDb, e.g, <host>.documents.azure.com:443", Mandatory = true)]
-        public string Host;
+        [Parameter(HelpMessage = "Account name of CosmosDb, e.g, <account>.documents.azure.com:443", Mandatory = true)]
+        public string Account;
 
         [Parameter(HelpMessage = "Name of database.", Mandatory = true)]
         public string Database;
@@ -29,17 +29,14 @@ namespace Piraeus.Module
         public string Key;
 
         [Parameter(HelpMessage = "Number of blob storage clients to use.", Mandatory = false)]
-        public int NumClients;
-
-        [Parameter(HelpMessage = "Number of milliseconds to delay next write.", Mandatory = false)]
-        public int Delay;
+        public int NumClients;       
 
         [Parameter(HelpMessage = "Description of the subscription.", Mandatory = false)]
         public string Description;
 
         protected override void ProcessRecord()
         {
-            string uriString = String.Format("https://{0}.documents.azure.com:443?database={1}&collection={2}&clients{3}&delay{4}", Host, Database, Collection, NumClients <= 0 ? 1 : NumClients, Delay <= 0 ? 1000 : Delay);
+            string uriString = String.Format("https://{0}.documents.azure.com:443?database={1}&collection={2}&clients={3}", Account, Database, Collection, NumClients <= 0 ? 1 : NumClients);
 
             SubscriptionMetadata metadata = new SubscriptionMetadata()
             {

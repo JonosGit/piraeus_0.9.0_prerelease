@@ -37,6 +37,11 @@ namespace Piraeus.Adapters
         private Dictionary<string, byte[]> coapObserved;
         private bool disposedValue = false; // To detect redundant calls
 
+        public string Identity
+        {
+            set { adapter.Identity = value; }
+        }
+
         /// <summary>
         /// Unsubscribes an ephemeral subscription from a resource.
         /// </summary>
@@ -221,6 +226,11 @@ namespace Piraeus.Adapters
                 string contentType = message.ContentType.HasValue ? message.ContentType.Value.ConvertToContentType() : "application/octet-stream";
 
                 EventMessage msg = new EventMessage(contentType, uri.Resource, ProtocolType.COAP, message.Encode(), DateTime.UtcNow, metadata.Audit);
+
+                if(!string.IsNullOrEmpty(uri.CacheKey))
+                {
+                    msg.CacheKey = uri.CacheKey;
+                }
 
                 if (uri.Indexes == null)
                 {

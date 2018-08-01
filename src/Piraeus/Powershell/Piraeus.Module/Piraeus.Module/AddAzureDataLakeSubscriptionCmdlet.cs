@@ -37,15 +37,12 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Number of blob storage clients to use.", Mandatory = false)]
         public int NumClients;
 
-        [Parameter(HelpMessage = "Number of milliseconds to delay next write.", Mandatory = false)]
-        public int Delay;
-
         [Parameter(HelpMessage = "Description of the subscription.", Mandatory = false)]
         public string Description;
 
         protected override void ProcessRecord()
         {
-            string uriString = Filename == null ? String.Format("adl://{0}.azuredatalakestore.net?domain={1}&appid={2}&folder={3}&clients{4}&delay{5}", Account, Domain, AppId, Folder, NumClients <= 0 ? 1 : NumClients, Delay <= 0 ? 1000 : Delay) : String.Format("adl://{0}.azuredatalakestore.net?domain={1}&appid={2}&folder={3}&file={4}&clients{5}&delay{6}", Account, Domain, AppId, Folder, Filename, NumClients <= 0 ? 1 : NumClients, Delay <= 0 ? 1000 : Delay);
+            string uriString = Filename == null ? String.Format("adl://{0}.azuredatalakestore.net?domain={1}&appid={2}&folder={3}&clients={4}", Account, Domain, AppId, Folder, NumClients <= 0 ? 1 : NumClients) : String.Format("adl://{0}.azuredatalakestore.net?domain={1}&appid={2}&folder={3}&file={4}&clients={5}", Account, Domain, AppId, Folder, Filename, NumClients <= 0 ? 1 : NumClients);
 
 
             SubscriptionMetadata metadata = new SubscriptionMetadata()

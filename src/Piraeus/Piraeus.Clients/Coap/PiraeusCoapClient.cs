@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using SkunkLab.Channels;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
+using SkunkLab.Protocols.Utilities;
 using SkunkLab.Security.Tokens;
 
 namespace Piraeus.Clients.Coap
@@ -55,7 +57,7 @@ namespace Piraeus.Clients.Coap
 
         public event System.EventHandler<CoapMessageEventArgs> OnPingResponse;
         
-        public async Task PublishAsync(string resourceUriString, string contentType, byte[] payload, bool confirmable, Action<CodeType, string, byte[]> action)
+        public async Task PublishAsync(string resourceUriString, string contentType, byte[] payload, bool confirmable, Action<CodeType, string, byte[]> action, string cacheKey = null, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
         {
             if(!channel.IsConnected)
             {
@@ -67,7 +69,7 @@ namespace Piraeus.Clients.Coap
             byte[] token = CoapToken.Create().TokenBytes;
             ushort id = session.CoapSender.NewId(token, null, action);
             string scheme = channel.IsEncrypted ? "coaps" : "coap";
-            string coapUriString = GetCoapUriString(scheme, config.Authority, resourceUriString); //String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
+            string coapUriString = GetCoapUriString(scheme, config.Authority, resourceUriString, cacheKey, indexes, messageId); //String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
 
             RequestMessageType mtype = confirmable ? RequestMessageType.Confirmable : RequestMessageType.NonConfirmable;
             CoapRequest cr = new CoapRequest(id, mtype, MethodType.POST, token, new Uri(coapUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
@@ -84,7 +86,7 @@ namespace Piraeus.Clients.Coap
 
         
 
-        public Task PublishAsync(string resourceUriString, string contentType, byte[] payload, NoResponseType nrt)
+        public Task PublishAsync(string resourceUriString, string contentType, byte[] payload, NoResponseType nrt, string cacheKey = null, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
         {
             if(!channel.IsConnected)
             {
@@ -97,7 +99,7 @@ namespace Piraeus.Clients.Coap
             byte[] token = CoapToken.Create().TokenBytes;
             ushort id = session.CoapSender.NewId(token);
             string scheme = channel.IsEncrypted ? "coaps" : "coap";
-            string coapUriString = GetCoapUriString(scheme, config.Authority, resourceUriString);
+            string coapUriString = GetCoapUriString(scheme, config.Authority, resourceUriString, cacheKey, indexes, messageId);
             
             
             CoapRequest cr = new CoapRequest(id, RequestMessageType.NonConfirmable, MethodType.POST, new Uri(coapUriString), MediaTypeConverter.ConvertToMediaType(contentType), payload);
@@ -280,6 +282,30 @@ namespace Piraeus.Clients.Coap
 
         #endregion
 
+        private string GetIndexString(IEnumerable<KeyValuePair<string, string>> indexes = null)
+        {
+            if (indexes == null)
+            {
+                return null;
+            }
+
+            StringBuilder builder = new StringBuilder();
+            foreach (KeyValuePair<string, string> kvp in indexes)
+            {
+                if (builder.ToString().Length == 0)
+                {
+                    builder.Append(String.Format("i={0};{1}", kvp.Key, kvp.Value));
+                }
+                else
+                {
+                    builder.Append(String.Format("&i={0};{1}", kvp.Key, kvp.Value));
+                }
+            }
+
+            return builder.ToString();
+
+
+        }
 
         private async Task ConnectAsync()
         {
@@ -321,17 +347,38 @@ namespace Piraeus.Clients.Coap
             Task.WhenAll(task);
         }
 
-        private string GetCoapUriString(string scheme, string authority, string resourceUriString)
+        private string GetCoapUriString(string scheme, string authority, string resourceUriString, string cacheKey = null, IEnumerable<KeyValuePair<string, string>> indexes = null, string messageId = null)
         {
+            string uriString = null;
             if (!usedToken && securityToken != null && (tokenType != SecurityTokenType.NONE || tokenType != SecurityTokenType.X509))
             {
                 usedToken = true;
-                return String.Format("{0}://{1}?r={2}&tt={3}&t={4}", scheme, config.Authority, resourceUriString, tokenType.ToString(), securityToken);                
+                uriString = String.Format("{0}://{1}?r={2}&tt={3}&t={4}", scheme, config.Authority, resourceUriString, tokenType.ToString(), securityToken);                
             }
             else
             {
-                return String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
+                uriString = String.Format("{0}://{1}?r={2}", scheme, config.Authority, resourceUriString);
             }
+
+            if(!string.IsNullOrEmpty(messageId))
+            {
+                uriString = uriString + String.Format("&{0}={1}", QueryStringConstants.MESSAGE_ID, messageId);
+            }
+
+            if(!string.IsNullOrEmpty(cacheKey))
+            {
+                uriString = uriString + String.Format("&{0}={1}", QueryStringConstants.CACHE_KEY, cacheKey);
+            }
+
+            string indexString = GetIndexString(indexes);
+            if(!string.IsNullOrEmpty(indexString))
+            {
+                uriString = uriString + String.Format("&{0}", indexString);
+            }
+
+            return uriString;
+
+
         }
 
 

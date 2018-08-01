@@ -102,9 +102,14 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Cha
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Channels.pdb
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\BouncyCastle.Crypto.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Net.Http.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.pdb
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\bin\Debug\SkunkLab.Diagnostics.dll.config
-C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojResolveAssemblyReference.cache
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csprojAssemblyReference.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CoreCompileInputs.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.csproj.CopyComplete
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Channels\SkunkLab.Channels\obj\Debug\SkunkLab.Channels.dll

@@ -1,6 +1,7 @@
 ﻿using Piraeus.Configuration.Settings;
 using Piraeus.Grains.Notifications;
 using SkunkLab.Channels;
+using SkunkLab.Channels.Udp;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Coap;
 using SkunkLab.Protocols.Coap.Handlers;
@@ -24,6 +25,8 @@ namespace Piraeus.Adapters
             coapConfig.IdentityClaimType = config.Identity.Client.IdentityClaimType;
             coapConfig.Indexes = config.Identity.Client.Indexes;
 
+            userAuditor = new UserAuditor();
+
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
             Channel.OnError += Channel_OnError;
@@ -40,6 +43,8 @@ namespace Piraeus.Adapters
         private ICoapRequestDispatch dispatcher;
         private bool disposedValue;
         private bool forcePerReceiveAuthn;
+        private UserAuditor userAuditor;
+        private bool closing;
 
 
         public override IChannel Channel { get; set; }
@@ -90,9 +95,6 @@ namespace Piraeus.Adapters
             Task.WhenAll(task);
 
             session.IsAuthenticated = Channel.IsAuthenticated;
-           
-
-            
 
             try
             {
@@ -100,7 +102,7 @@ namespace Piraeus.Adapters
                 {
                     CoapMessage msg = CoapMessage.DecodeMessage(e.Message);
                     CoapUri coapUri = new CoapUri(msg.ResourceUri.ToString());
-                    session.IsAuthenticated = session.Authenticate(coapUri.TokenType, coapUri.SecurityToken);
+                    session.IsAuthenticated = session.Authenticate(coapUri.TokenType, coapUri.SecurityToken);                   
                 }
 
                 if (session.IsAuthenticated)
@@ -108,9 +110,14 @@ namespace Piraeus.Adapters
                     IdentityDecoder decoder = new IdentityDecoder(session.Config.IdentityClaimType, session.Config.Indexes);
                     session.Identity = decoder.Id;
                     session.Indexes = decoder.Indexes;
+
+                    if (userAuditor.CanAudit)
+                    {
+                        UserLogRecord record = new UserLogRecord(Channel.Id, session.Identity, session.Config.IdentityClaimType, Channel.TypeId, "COAP", "Granted", DateTime.UtcNow);
+                        Task t = userAuditor.WriteAuditRecordAsync(record);
+                        Task.WhenAll(t);
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -141,7 +148,7 @@ namespace Piraeus.Adapters
             //Task logTask = Log.LogInfoAsync("Channel {0} received message.", e.ChannelId);
             //Task.WhenAll(logTask);
 
-            LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(100);
+            //LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(100);
 
             try
             {
@@ -150,6 +157,15 @@ namespace Piraeus.Adapters
                 if (!session.IsAuthenticated || forcePerReceiveAuthn)
                 {
                     CoapAuthentication.EnsureAuthentication(session, message, forcePerReceiveAuthn);
+                    dispatcher.Identity = session.Identity;
+
+                    if (userAuditor.CanAudit)
+                    {
+                        UserLogRecord record = new UserLogRecord(Channel.Id, session.Identity, session.Config.IdentityClaimType, Channel.TypeId, "COAP", "Granted", DateTime.UtcNow);
+                        Task t = userAuditor.WriteAuditRecordAsync(record);
+                        Task.WhenAll(t);
+                    }
+
                 }
 
                 OnObserve?.Invoke(this, new ChannelObserverEventArgs(message.ResourceUri.ToString(), MediaTypeConverter.ConvertFromMediaType(message.ContentType), message.Payload));
@@ -224,9 +240,24 @@ namespace Piraeus.Adapters
 
         private void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
-            OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
-            Task task = Log.LogInfoAsync("Channel {0} closing.", Channel.Id);
-            Task.WhenAll(task);
+            if (!closing)
+            {
+                closing = true;
+
+                Task task = Log.LogInfoAsync("Channel {0} closing.", Channel.Id);
+                Task.WhenAll(task);
+
+                if (userAuditor.CanAudit)
+                {
+                    UserLogRecord record = userAuditor.GetAuditRecord(Channel.Id, session.Identity);
+                    record.LogoutTime = DateTime.UtcNow;
+                    Task t = userAuditor.WriteAuditRecordAsync(record);
+                    Task.WhenAll(t);
+                }
+
+                OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
+            }
+
         }
 
         private void Channel_OnStateChange(object sender, ChannelStateEventArgs e)

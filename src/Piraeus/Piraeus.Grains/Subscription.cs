@@ -68,6 +68,7 @@ namespace Piraeus.Grains
 
         public override async Task OnDeactivateAsync()
         {
+            Trace.TraceInformation("Subscription deactivation '{0}'", State.Metadata.SubscriptionUriString);
             await WriteStateAsync();
         }
         #endregion

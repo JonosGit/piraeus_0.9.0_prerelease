@@ -35,11 +35,18 @@ namespace WebGateway.Controllers
                 Task task = ServiceIdentityConfig.Configure();
                 Task.WhenAll(task);
             }
-                                   
-            config = Piraeus.Configuration.PiraeusConfigManager.Settings;
-            source = new CancellationTokenSource();
 
-            Trace.TraceInformation("Orleans grain client initialized {0} is connect controller", Orleans.GrainClient.IsInitialized);
+            try
+            {
+                config = Piraeus.Configuration.PiraeusConfigManager.Settings;
+                source = new CancellationTokenSource();
+
+                Trace.TraceInformation("Orleans grain client initialized {0} is connect controller", Orleans.GrainClient.IsInitialized);
+            }
+            catch(Exception ex)
+            {
+                Trace.TraceError(ex.Message);
+            }
         }
 
         private CancellationTokenSource source;
@@ -97,7 +104,8 @@ namespace WebGateway.Controllers
                     adapter.Init();
                     ThreadPool.QueueUserWorkItem(new WaitCallback(Listen), waitHandles[0]);
                     WaitHandle.WaitAll(waitHandles);
-
+                    Task task = adapter.Channel.CloseAsync();
+                    Task.WhenAll(task);
                     return response;
                 }
             }

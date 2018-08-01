@@ -335,23 +335,11 @@ namespace SkunkLab.Storage
             if (!blob.Exists())
             {
                 blob.Properties.ContentType = contentType;
-                await AppendAsync(blob, source, encryptKeyName);
+                await UploadAsync(blob, source, encryptKeyName);
             }
             else
             {
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    byte[] newline = Encoding.ASCII.GetBytes(Environment.NewLine);
-                    stream.Write(newline, 0, newline.Length);
-
-                    byte[] sourceBuffer = new byte[source.Length];
-                    source.Read(sourceBuffer, 0, sourceBuffer.Length);
-
-                    await stream.WriteAsync(sourceBuffer, newline.Length, sourceBuffer.Length);
-                    await AppendAsync(blob, stream, encryptKeyName);
-
-                }
-                    
+                await AppendAsync(blob, source, encryptKeyName);                    
             }
         }
         public void WriteAppendBlob(string containerName, string filename, byte[] source, string contentType = "application/octet-stream", string encryptKeyName = null)
@@ -546,13 +534,17 @@ namespace SkunkLab.Storage
         {
             if(encryptKeyName == null)
             {
-                blob.UploadFromStream(stream); 
+                blob.UploadFromStream(stream);
+                stream.Flush();
             }
             else
             {
                 BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
                 blob.UploadFromStream(stream, null, options);
+                stream.Flush();
             }
+
+            stream.Close();
         }
 
         private async Task UploadAsync(ICloudBlob blob, byte[] buffer, string encryptKeyName = null)
@@ -562,6 +554,8 @@ namespace SkunkLab.Storage
                 try
                 {
                     await UploadAsync(blob, stream, encryptKeyName);
+                    await stream.FlushAsync();
+                    stream.Close();
                 }
                 catch(Exception ex)
                 {
@@ -585,10 +579,13 @@ namespace SkunkLab.Storage
                 {
                     BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
                     await blob.UploadFromStreamAsync(stream, null, options, null);
+                    await stream.FlushAsync();
+                    stream.Close();
                 }
             }
             catch (Exception ex)
-            {
+            {                
+                stream.Close();
                 Trace.TraceWarning("Blob write failed.");
                 Trace.TraceError(ex.Message);
                 throw ex;
@@ -608,6 +605,9 @@ namespace SkunkLab.Storage
                 BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
                 blob.AppendBlock(stream, null, null, options);
             }
+
+            stream.Flush();
+            stream.Close();
         }
 
         private async Task AppendAsync(CloudAppendBlob blob, Stream stream, string encryptKeyName = null)
@@ -616,13 +616,16 @@ namespace SkunkLab.Storage
             {
                 if (string.IsNullOrEmpty(encryptKeyName))
                 {
-                    await blob.AppendBlockAsync(stream);
+                    await blob.AppendBlockAsync(stream);                                       
                 }
                 else
                 {
                     BlobRequestOptions options = keyVault.GetEncryptionBlobOptions(encryptKeyName);
                     await blob.AppendBlockAsync(stream, null, null, options, null);
                 }
+
+                await stream.FlushAsync();
+                stream.Close();
             }
             catch(Exception ex)
             {

@@ -34,7 +34,7 @@ namespace SkunkLab.Protocols.Mqtt
         /// <param name="ackRandomFactor"></param>
         /// <param name="maxRetransmit"></param>
         /// <param name="maxLatency"></param>
-        public MqttConfig(double keepAliveSeconds = 180.0, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, double maxLatency = 100.0)
+        public MqttConfig(double keepAliveSeconds = 150.0, double ackTimeout = 2.0, double ackRandomFactor = 1.5, int maxRetransmit = 4, double maxLatency = 100.0)
         {
             KeepAliveSeconds = keepAliveSeconds;
             AckTimeout = TimeSpan.FromSeconds(ackTimeout);

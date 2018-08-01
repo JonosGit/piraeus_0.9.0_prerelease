@@ -39,7 +39,7 @@ namespace SkunkLab.Protocols.Coap
             Resource = GetSingleParameter(QueryStringConstants.RESOURCE);
             TokenType = GetSingleParameter(QueryStringConstants.TOKEN_TYPE);
             SecurityToken = GetSingleParameter(QueryStringConstants.SECURITY_TOKEN);
-            
+            CacheKey = GetSingleParameter(QueryStringConstants.CACHE_KEY);
             //Subscriptions = GetEnumerableParameters(QueryStringConstants.SUBSCRIPTION);
             Indexes = BuildIndexes(GetEnumerableParameters(QueryStringConstants.INDEX));
 
@@ -48,6 +48,8 @@ namespace SkunkLab.Protocols.Coap
         public string Resource { get; internal set; }
         public string ContentType { get; internal set; }
         public string MessageId { get; internal set; }
+
+        public string CacheKey { get; internal set; }
         public IEnumerable<KeyValuePair<string, string>> Indexes { get; internal set; }
         public IEnumerable<string> Subscriptions { get; internal set; }
         public string SecurityToken { get; internal set; }

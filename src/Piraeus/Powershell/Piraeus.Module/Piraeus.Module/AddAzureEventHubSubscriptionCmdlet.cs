@@ -16,8 +16,8 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
-        [Parameter(HelpMessage = "Host name of EventHub, e.g, <host>.servicebus.windows.net", Mandatory = true)]
-        public string Host;
+        [Parameter(HelpMessage = "Account name of EventHub, e.g, <account>.servicebus.windows.net", Mandatory = true)]
+        public string Account;
 
         [Parameter(HelpMessage = "Name of EventHub", Mandatory = true)]
         public string Hub;
@@ -34,15 +34,13 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Number of blob storage clients to use.", Mandatory = false)]
         public int NumClients;
 
-        [Parameter(HelpMessage = "Number of milliseconds to delay next write.", Mandatory = false)]
-        public int Delay;
 
         [Parameter(HelpMessage = "Description of the subscription.", Mandatory = false)]
         public string Description;
 
         protected override void ProcessRecord()
         {
-            string uriString = String.Format("eh://{0}.servicebus.windows.net?hub={1}&keyname={2}&clients{3}&delay{4}", Host, Hub, KeyName, NumClients <= 0 ? 1 : NumClients, Delay <= 0 ? 1000 : Delay);
+            string uriString = String.Format("eh://{0}.servicebus.windows.net?hub={1}&keyname={2}&clients={3}", Account, Hub, KeyName, NumClients <= 0 ? 1 : NumClients);
 
             if(PartitionId != null)
             {

@@ -27,7 +27,6 @@ namespace SkunkLab.Storage
         public void ReturnBuffer(byte[] buffer)
         {
             this.Manager.ReturnBuffer(buffer);
-
         }
 
         public byte[] TakeBuffer(int bufferSize)

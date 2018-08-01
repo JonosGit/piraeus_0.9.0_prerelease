@@ -16,8 +16,8 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
-        [Parameter(HelpMessage = "Host name of IoT Hub, e.g, <host>.azure-devices.net", Mandatory = true)]
-        public string Host;
+        [Parameter(HelpMessage = "Account name of IoT Hub, e.g, <account>.azure-devices.net", Mandatory = true)]
+        public string Account;
 
         [Parameter(HelpMessage = "Device ID that you will send messages.", Mandatory = true)]
         public string DeviceId;
@@ -36,7 +36,7 @@ namespace Piraeus.Module
 
         protected override void ProcessRecord()
         {
-            string uriString = String.Format("iothub://{0}.azure-devices.net?deviceid={1}&keyname={2}&method={3}", Host, DeviceId, KeyName, Method);
+            string uriString = String.Format("iothub://{0}.azure-devices.net?deviceid={1}&keyname={2}&method={3}", Account, DeviceId, KeyName, Method);
 
             SubscriptionMetadata metadata = new SubscriptionMetadata()
             {

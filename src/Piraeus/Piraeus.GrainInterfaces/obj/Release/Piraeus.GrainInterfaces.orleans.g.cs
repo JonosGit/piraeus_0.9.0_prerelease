@@ -431,6 +431,7 @@ namespace Piraeus.GrainInterfaces
             global::Piraeus.Core.Messaging.EventMessage result = new global::Piraeus.Core.Messaging.EventMessage();
             context.@RecordCopy(original, result);
             result.@Audit = input.@Audit;
+            result.@CacheKey = input.@CacheKey;
             result.@ContentType = input.@ContentType;
             result.@Message = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Message, context);
             result.@MessageId = input.@MessageId;
@@ -445,6 +446,7 @@ namespace Piraeus.GrainInterfaces
         {
             global::Piraeus.Core.Messaging.EventMessage input = (global::Piraeus.Core.Messaging.EventMessage)untypedInput;
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Audit, context, typeof (global::System.Boolean));
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@CacheKey, context, typeof (global::System.String));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@ContentType, context, typeof (global::System.String));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Message, context, typeof (global::System.Byte[]));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@MessageId, context, typeof (global::System.String));
@@ -459,6 +461,7 @@ namespace Piraeus.GrainInterfaces
             global::Piraeus.Core.Messaging.EventMessage result = new global::Piraeus.Core.Messaging.EventMessage();
             context.@RecordObject(result);
             result.@Audit = (global::System.Boolean)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Boolean), context);
+            result.@CacheKey = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
             result.@ContentType = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
             result.@Message = (global::System.Byte[])global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Byte[]), context);
             result.@MessageId = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
@@ -478,6 +481,7 @@ namespace Piraeus.GrainInterfaces
             global::Piraeus.Core.Metadata.SubscriptionMetadata input = ((global::Piraeus.Core.Metadata.SubscriptionMetadata)original);
             global::Piraeus.Core.Metadata.SubscriptionMetadata result = new global::Piraeus.Core.Metadata.SubscriptionMetadata();
             context.@RecordCopy(original, result);
+            result.@ClaimKey = input.@ClaimKey;
             result.@Description = input.@Description;
             result.@DurableMessaging = input.@DurableMessaging;
             result.@Expires = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeepCopyInner(input.@Expires, context);
@@ -497,6 +501,7 @@ namespace Piraeus.GrainInterfaces
         public static void Serializer(global::System.Object untypedInput, global::Orleans.Serialization.ISerializationContext context, global::System.Type expected)
         {
             global::Piraeus.Core.Metadata.SubscriptionMetadata input = (global::Piraeus.Core.Metadata.SubscriptionMetadata)untypedInput;
+            global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@ClaimKey, context, typeof (global::System.String));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Description, context, typeof (global::System.String));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@DurableMessaging, context, typeof (global::System.Boolean));
             global::Orleans.Serialization.SerializationManager.@SerializeInner(input.@Expires, context, typeof (global::System.Nullable<global::System.DateTime>));
@@ -516,6 +521,7 @@ namespace Piraeus.GrainInterfaces
         {
             global::Piraeus.Core.Metadata.SubscriptionMetadata result = new global::Piraeus.Core.Metadata.SubscriptionMetadata();
             context.@RecordObject(result);
+            result.@ClaimKey = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
             result.@Description = (global::System.String)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.String), context);
             result.@DurableMessaging = (global::System.Boolean)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Boolean), context);
             result.@Expires = (global::System.Nullable<global::System.DateTime>)global::Orleans.Serialization.SerializationManager.@DeserializeInner(typeof (global::System.Nullable<global::System.DateTime>), context);

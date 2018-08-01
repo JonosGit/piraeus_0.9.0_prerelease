@@ -51,9 +51,11 @@ namespace WebGateway.Security
                 var config = Orleans.Runtime.Configuration.ClientConfiguration.LocalhostSilo();
                 
                 Orleans.GrainClient.Initialize(config);
+                Console.WriteLine("Orleans Grain Client initialized :-)");
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Orleans Grain Client failed to initialize :-(");
                 Trace.TraceWarning("Failed to intiailize orleans client via localhost");
                 Trace.TraceError(ex.Message);
             }

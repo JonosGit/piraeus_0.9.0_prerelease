@@ -1,0 +1,1762 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.EventGrid</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor">
+            <summary>
+            The agent that initiated the event. For most situations, this could be
+            from the authorization context of the request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor.#ctor">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventActor
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventActor
+            class.
+            </summary>
+            <param name="name">The subject or username associated with the
+            request context that generated the event.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor.Name">
+            <summary>
+            Gets or sets the subject or username associated with the request
+            context that generated the event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData">
+            <summary>
+            The content of the event request message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.#ctor">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.#ctor(System.String,System.Nullable{System.DateTime},System.String,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource)">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventData class.
+            </summary>
+            <param name="id">The event ID.</param>
+            <param name="timestamp">The time at which the event
+            occurred.</param>
+            <param name="action">The action that encompasses the provided
+            event.</param>
+            <param name="target">The target of the event.</param>
+            <param name="request">The request that generated the event.</param>
+            <param name="actor">The agent that initiated the event. For most
+            situations, this could be from the authorization context of the
+            request.</param>
+            <param name="source">The registry node that generated the event.
+            Put differently, while the actor initiates the event, the source
+            generates it.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Id">
+            <summary>
+            Gets or sets the event ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Timestamp">
+            <summary>
+            Gets or sets the time at which the event occurred.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Action">
+            <summary>
+            Gets or sets the action that encompasses the provided event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Target">
+            <summary>
+            Gets or sets the target of the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Request">
+            <summary>
+            Gets or sets the request that generated the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Actor">
+            <summary>
+            Gets or sets the agent that initiated the event. For most
+            situations, this could be from the authorization context of the
+            request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventData.Source">
+            <summary>
+            Gets or sets the registry node that generated the event. Put
+            differently, while the actor initiates the event, the source
+            generates it.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest">
+            <summary>
+            The request that generated the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.#ctor">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventRequest
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventRequest
+            class.
+            </summary>
+            <param name="id">The ID of the request that initiated the
+            event.</param>
+            <param name="addr">The IP or hostname and possibly port of the
+            client connection that initiated the event. This is the RemoteAddr
+            from the standard http request.</param>
+            <param name="host">The externally accessible hostname of the
+            registry instance, as specified by the http host header on incoming
+            requests.</param>
+            <param name="method">The request method that generated the
+            event.</param>
+            <param name="useragent">The user agent header of the
+            request.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.Id">
+            <summary>
+            Gets or sets the ID of the request that initiated the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.Addr">
+            <summary>
+            Gets or sets the IP or hostname and possibly port of the client
+            connection that initiated the event. This is the RemoteAddr from
+            the standard http request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.Host">
+            <summary>
+            Gets or sets the externally accessible hostname of the registry
+            instance, as specified by the http host header on incoming
+            requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.Method">
+            <summary>
+            Gets or sets the request method that generated the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest.Useragent">
+            <summary>
+            Gets or sets the user agent header of the request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource">
+            <summary>
+            The registry node that generated the event. Put differently, while the
+            actor initiates the event, the source generates it.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource.#ctor">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventSource
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventSource
+            class.
+            </summary>
+            <param name="addr">The IP or hostname and the port of the registry
+            node that generated the event. Generally, this will be resolved by
+            os.Hostname() along with the running port.</param>
+            <param name="instanceID">The running instance of an application.
+            Changes after each restart.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource.Addr">
+            <summary>
+            Gets or sets the IP or hostname and the port of the registry node
+            that generated the event. Generally, this will be resolved by
+            os.Hostname() along with the running port.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource.InstanceID">
+            <summary>
+            Gets or sets the running instance of an application. Changes after
+            each restart.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget">
+            <summary>
+            The target of the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.#ctor">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventTarget
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.#ctor(System.String,System.Nullable{System.Int64},System.String,System.Nullable{System.Int64},System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ContainerRegistryEventTarget
+            class.
+            </summary>
+            <param name="mediaType">The MIME type of the referenced
+            object.</param>
+            <param name="size">The number of bytes of the content. Same as
+            Length field.</param>
+            <param name="digest">The digest of the content, as defined by the
+            Registry V2 HTTP API Specification.</param>
+            <param name="length">The number of bytes of the content. Same as
+            Size field.</param>
+            <param name="repository">The repository name.</param>
+            <param name="url">The direct URL to the content.</param>
+            <param name="tag">The tag name.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.MediaType">
+            <summary>
+            Gets or sets the MIME type of the referenced object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Size">
+            <summary>
+            Gets or sets the number of bytes of the content. Same as Length
+            field.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Digest">
+            <summary>
+            Gets or sets the digest of the content, as defined by the Registry
+            V2 HTTP API Specification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Length">
+            <summary>
+            Gets or sets the number of bytes of the content. Same as Size
+            field.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Repository">
+            <summary>
+            Gets or sets the repository name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Url">
+            <summary>
+            Gets or sets the direct URL to the content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget.Tag">
+            <summary>
+            Gets or sets the tag name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryImageDeletedEventData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.ContainerRegistry.ImageDeleted event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryImageDeletedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the
+            ContainerRegistryImageDeletedEventData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryImageDeletedEventData.#ctor(System.String,System.Nullable{System.DateTime},System.String,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource)">
+            <summary>
+            Initializes a new instance of the
+            ContainerRegistryImageDeletedEventData class.
+            </summary>
+            <param name="id">The event ID.</param>
+            <param name="timestamp">The time at which the event
+            occurred.</param>
+            <param name="action">The action that encompasses the provided
+            event.</param>
+            <param name="target">The target of the event.</param>
+            <param name="request">The request that generated the event.</param>
+            <param name="actor">The agent that initiated the event. For most
+            situations, this could be from the authorization context of the
+            request.</param>
+            <param name="source">The registry node that generated the event.
+            Put differently, while the actor initiates the event, the source
+            generates it.</param>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ContainerRegistryImagePushedEventData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.ContainerRegistry.ImagePushed event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryImagePushedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the
+            ContainerRegistryImagePushedEventData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ContainerRegistryImagePushedEventData.#ctor(System.String,System.Nullable{System.DateTime},System.String,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventTarget,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventRequest,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventActor,Microsoft.Azure.EventGrid.Models.ContainerRegistryEventSource)">
+            <summary>
+            Initializes a new instance of the
+            ContainerRegistryImagePushedEventData class.
+            </summary>
+            <param name="id">The event ID.</param>
+            <param name="timestamp">The time at which the event
+            occurred.</param>
+            <param name="action">The action that encompasses the provided
+            event.</param>
+            <param name="target">The target of the event.</param>
+            <param name="request">The request that generated the event.</param>
+            <param name="actor">The agent that initiated the event. For most
+            situations, this could be from the authorization context of the
+            request.</param>
+            <param name="source">The registry node that generated the event.
+            Put differently, while the actor initiates the event, the source
+            generates it.</param>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a device life
+            cycle event (DeviceCreated, DeviceDeleted).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceLifeCycleEventProperties
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.#ctor(System.String,System.String,System.String,System.String,Microsoft.Azure.EventGrid.Models.DeviceTwinInfo)">
+            <summary>
+            Initializes a new instance of the DeviceLifeCycleEventProperties
+            class.
+            </summary>
+            <param name="deviceId">The unique identifier of the device. This
+            case-sensitive string can be up to 128 characters long, and
+            supports ASCII 7-bit alphanumeric characters plus the following
+            special characters: - : . + % _ # * ? ! ( ) , = @ ; $ '.</param>
+            <param name="hubName">Name of the IoT Hub where the device was
+            created or deleted.</param>
+            <param name="opType">The event type specified for this operation by
+            the IoT Hub.</param>
+            <param name="operationTimestamp">The ISO8601 timestamp of the
+            operation.</param>
+            <param name="twin">Information about the device twin, which is the
+            cloud represenation of application device metadata.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.DeviceId">
+            <summary>
+            Gets or sets the unique identifier of the device. This
+            case-sensitive string can be up to 128 characters long, and
+            supports ASCII 7-bit alphanumeric characters plus the following
+            special characters: - : . + % _ # * ? ! ( ) , = @ ; $ '.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.HubName">
+            <summary>
+            Gets or sets name of the IoT Hub where the device was created or
+            deleted.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.OpType">
+            <summary>
+            Gets or sets the event type specified for this operation by the IoT
+            Hub.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.OperationTimestamp">
+            <summary>
+            Gets or sets the ISO8601 timestamp of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceLifeCycleEventProperties.Twin">
+            <summary>
+            Gets or sets information about the device twin, which is the cloud
+            represenation of application device metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo">
+            <summary>
+            Information about the device twin, which is the cloud represenation of
+            application device metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfo class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.#ctor(System.String,System.Nullable{System.Double},System.String,System.String,System.String,System.String,Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties,System.String,System.String,System.Nullable{System.Double},Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint)">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfo class.
+            </summary>
+            <param name="authenticationType">Authentication type used for this
+            device: either SAS, SelfSigned, or CertificateAuthority.</param>
+            <param name="cloudToDeviceMessageCount">Count of cloud to device
+            messages sent to this device.</param>
+            <param name="connectionState">Whether the device is connected or
+            disconnected.</param>
+            <param name="deviceId">The unique identifier of the device
+            twin.</param>
+            <param name="etag">A piece of information that describes the
+            content of the device twin. Each etag is guaranteed to be unique
+            per device twin.</param>
+            <param name="lastActivityTime">The ISO8601 timestamp of the last
+            activity.</param>
+            <param name="properties">Properties JSON element.</param>
+            <param name="status">Whether the device twin is enabled or
+            disabled.</param>
+            <param name="statusUpdateTime">The ISO8601 timestamp of the last
+            device twin status update.</param>
+            <param name="version">An integer that is incremented by one each
+            time the device twin is updated.</param>
+            <param name="x509Thumbprint">The thumbprint is a unique value for
+            the x509 certificate, commonly used to find a particular
+            certificate in a certificate store. The thumbprint is dynamically
+            generated using the SHA1 algorithm, and does not physically exist
+            in the certificate.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.AuthenticationType">
+            <summary>
+            Gets or sets authentication type used for this device: either SAS,
+            SelfSigned, or CertificateAuthority.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.CloudToDeviceMessageCount">
+            <summary>
+            Gets or sets count of cloud to device messages sent to this device.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.ConnectionState">
+            <summary>
+            Gets or sets whether the device is connected or disconnected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.DeviceId">
+            <summary>
+            Gets or sets the unique identifier of the device twin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.Etag">
+            <summary>
+            Gets or sets a piece of information that describes the content of
+            the device twin. Each etag is guaranteed to be unique per device
+            twin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.LastActivityTime">
+            <summary>
+            Gets or sets the ISO8601 timestamp of the last activity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.Properties">
+            <summary>
+            Gets or sets properties JSON element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.Status">
+            <summary>
+            Gets or sets whether the device twin is enabled or disabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.StatusUpdateTime">
+            <summary>
+            Gets or sets the ISO8601 timestamp of the last device twin status
+            update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.Version">
+            <summary>
+            Gets or sets an integer that is incremented by one each time the
+            device twin is updated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfo.X509Thumbprint">
+            <summary>
+            Gets or sets the thumbprint is a unique value for the x509
+            certificate, commonly used to find a particular certificate in a
+            certificate store. The thumbprint is dynamically generated using
+            the SHA1 algorithm, and does not physically exist in the
+            certificate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties">
+            <summary>
+            Properties JSON element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfoProperties class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties.#ctor(Microsoft.Azure.EventGrid.Models.DeviceTwinProperties,Microsoft.Azure.EventGrid.Models.DeviceTwinProperties)">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfoProperties class.
+            </summary>
+            <param name="desired">A portion of the properties that can be
+            written only by the application back-end, and read by the
+            device.</param>
+            <param name="reported">A portion of the properties that can be
+            written only by the device, and read by the application
+            back-end.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties.Desired">
+            <summary>
+            Gets or sets a portion of the properties that can be written only
+            by the application back-end, and read by the device.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoProperties.Reported">
+            <summary>
+            Gets or sets a portion of the properties that can be written only
+            by the device, and read by the application back-end.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint">
+            <summary>
+            The thumbprint is a unique value for the x509 certificate, commonly
+            used to find a particular certificate in a certificate store. The
+            thumbprint is dynamically generated using the SHA1 algorithm, and does
+            not physically exist in the certificate.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfoX509Thumbprint
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DeviceTwinInfoX509Thumbprint
+            class.
+            </summary>
+            <param name="primaryThumbprint">Primary thumbprint for the x509
+            certificate.</param>
+            <param name="secondaryThumbprint">Secondary thumbprint for the x509
+            certificate.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint.PrimaryThumbprint">
+            <summary>
+            Gets or sets primary thumbprint for the x509 certificate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinInfoX509Thumbprint.SecondaryThumbprint">
+            <summary>
+            Gets or sets secondary thumbprint for the x509 certificate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceTwinMetadata">
+            <summary>
+            Metadata information for the properties JSON document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinMetadata.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceTwinMetadata class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinMetadata.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DeviceTwinMetadata class.
+            </summary>
+            <param name="lastUpdated">The ISO8601 timestamp of the last time
+            the properties were updated.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinMetadata.LastUpdated">
+            <summary>
+            Gets or sets the ISO8601 timestamp of the last time the properties
+            were updated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.DeviceTwinProperties">
+            <summary>
+            A portion of the properties that can be written only by the application
+            back-end, and read by the device.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinProperties.#ctor">
+            <summary>
+            Initializes a new instance of the DeviceTwinProperties class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.DeviceTwinProperties.#ctor(Microsoft.Azure.EventGrid.Models.DeviceTwinMetadata,System.Nullable{System.Double})">
+            <summary>
+            Initializes a new instance of the DeviceTwinProperties class.
+            </summary>
+            <param name="metadata">Metadata information for the properties JSON
+            document.</param>
+            <param name="version">Version of device twin properties.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinProperties.Metadata">
+            <summary>
+            Gets or sets metadata information for the properties JSON document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.DeviceTwinProperties.Version">
+            <summary>
+            Gets or sets version of device twin properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.EventGridEvent">
+            <summary>
+            Properties of an event published to an Event Grid topic.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.EventGridEvent.#ctor">
+            <summary>
+            Initializes a new instance of the EventGridEvent class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.EventGridEvent.#ctor(System.String,System.String,System.Object,System.String,System.DateTime,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the EventGridEvent class.
+            </summary>
+            <param name="id">An unique identifier for the event.</param>
+            <param name="subject">A resource path relative to the topic
+            path.</param>
+            <param name="data">Event data specific to the event type.</param>
+            <param name="eventType">The type of the event that
+            occurred.</param>
+            <param name="eventTime">The time (in UTC) the event was
+            generated.</param>
+            <param name="dataVersion">The schema version of the data
+            object.</param>
+            <param name="topic">The resource path of the event source.</param>
+            <param name="metadataVersion">The schema version of the event
+            metadata.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.Id">
+            <summary>
+            Gets or sets an unique identifier for the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.Topic">
+            <summary>
+            Gets or sets the resource path of the event source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.Subject">
+            <summary>
+            Gets or sets a resource path relative to the topic path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.Data">
+            <summary>
+            Gets or sets event data specific to the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.EventType">
+            <summary>
+            Gets or sets the type of the event that occurred.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.EventTime">
+            <summary>
+            Gets or sets the time (in UTC) the event was generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.MetadataVersion">
+            <summary>
+            Gets the schema version of the event metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventGridEvent.DataVersion">
+            <summary>
+            Gets or sets the schema version of the data object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.EventGridEvent.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for an
+            Microsoft.EventHub.CaptureFileCreated event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the
+            EventHubCaptureFileCreatedEventData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.#ctor(System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Initializes a new instance of the
+            EventHubCaptureFileCreatedEventData class.
+            </summary>
+            <param name="fileurl">The path to the capture file.</param>
+            <param name="fileType">The file type of the capture file.</param>
+            <param name="partitionId">The shard ID.</param>
+            <param name="sizeInBytes">The file size.</param>
+            <param name="eventCount">The number of events in the file.</param>
+            <param name="firstSequenceNumber">The smallest sequence number from
+            the queue.</param>
+            <param name="lastSequenceNumber">The last sequence number from the
+            queue.</param>
+            <param name="firstEnqueueTime">The first time from the
+            queue.</param>
+            <param name="lastEnqueueTime">The last time from the queue.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.Fileurl">
+            <summary>
+            Gets or sets the path to the capture file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.FileType">
+            <summary>
+            Gets or sets the file type of the capture file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.PartitionId">
+            <summary>
+            Gets or sets the shard ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.SizeInBytes">
+            <summary>
+            Gets or sets the file size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.EventCount">
+            <summary>
+            Gets or sets the number of events in the file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.FirstSequenceNumber">
+            <summary>
+            Gets or sets the smallest sequence number from the queue.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.LastSequenceNumber">
+            <summary>
+            Gets or sets the last sequence number from the queue.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.FirstEnqueueTime">
+            <summary>
+            Gets or sets the first time from the queue.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.EventHubCaptureFileCreatedEventData.LastEnqueueTime">
+            <summary>
+            Gets or sets the last time from the queue.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.IotHubDeviceCreatedEventData">
+            <summary>
+            Event data for Microsoft.Devices.DeviceCreated event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.IotHubDeviceCreatedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the IotHubDeviceCreatedEventData
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.IotHubDeviceCreatedEventData.#ctor(System.String,System.String,System.String,System.String,Microsoft.Azure.EventGrid.Models.DeviceTwinInfo)">
+            <summary>
+            Initializes a new instance of the IotHubDeviceCreatedEventData
+            class.
+            </summary>
+            <param name="deviceId">The unique identifier of the device. This
+            case-sensitive string can be up to 128 characters long, and
+            supports ASCII 7-bit alphanumeric characters plus the following
+            special characters: - : . + % _ # * ? ! ( ) , = @ ; $ '.</param>
+            <param name="hubName">Name of the IoT Hub where the device was
+            created or deleted.</param>
+            <param name="opType">The event type specified for this operation by
+            the IoT Hub.</param>
+            <param name="operationTimestamp">The ISO8601 timestamp of the
+            operation.</param>
+            <param name="twin">Information about the device twin, which is the
+            cloud represenation of application device metadata.</param>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.IotHubDeviceDeletedEventData">
+            <summary>
+            Event data for Microsoft.Devices.DeviceDeleted event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.IotHubDeviceDeletedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the IotHubDeviceDeletedEventData
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.IotHubDeviceDeletedEventData.#ctor(System.String,System.String,System.String,System.String,Microsoft.Azure.EventGrid.Models.DeviceTwinInfo)">
+            <summary>
+            Initializes a new instance of the IotHubDeviceDeletedEventData
+            class.
+            </summary>
+            <param name="deviceId">The unique identifier of the device. This
+            case-sensitive string can be up to 128 characters long, and
+            supports ASCII 7-bit alphanumeric characters plus the following
+            special characters: - : . + % _ # * ? ! ( ) , = @ ; $ '.</param>
+            <param name="hubName">Name of the IoT Hub where the device was
+            created or deleted.</param>
+            <param name="opType">The event type specified for this operation by
+            the IoT Hub.</param>
+            <param name="operationTimestamp">The ISO8601 timestamp of the
+            operation.</param>
+            <param name="twin">Information about the device twin, which is the
+            cloud represenation of application device metadata.</param>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for an
+            Microsoft.Resources.ResourceDeleteCancel event. This is raised when a
+            resource delete operation is canceled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceDeleteCancelData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceDeleteCancelData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteCancelData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.Resources.ResourceDeleteFailure event. This is raised when a
+            resource delete operation fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceDeleteFailureData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceDeleteFailureData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteFailureData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.Resources.ResourceDeleteSuccess event. This is raised when a
+            resource delete operation succeeds.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceDeleteSuccessData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceDeleteSuccessData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceDeleteSuccessData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.Resources.ResourceWriteCancel event. This is raised when a
+            resource create or update operation is canceled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceWriteCancelData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceWriteCancelData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteCancelData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.Resources.ResourceWriteFailure event. This is raised when a
+            resource create or update operation fails.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceWriteFailureData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceWriteFailureData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteFailureData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for a
+            Microsoft.Resources.ResourceWriteSuccess event. This is raised when a
+            resource create or update operation succeeds.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceWriteSuccessData class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ResourceWriteSuccessData class.
+            </summary>
+            <param name="tenantId">The tenant ID of the resource.</param>
+            <param name="subscriptionId">The subscription ID of the
+            resource.</param>
+            <param name="resourceGroup">The resource group of the
+            resource.</param>
+            <param name="resourceProvider">The resource provider performing the
+            operation.</param>
+            <param name="resourceUri">The URI of the resource in the
+            operation.</param>
+            <param name="operationName">The operation that was
+            performed.</param>
+            <param name="status">The status of the operation.</param>
+            <param name="authorization">The requested authorization for the
+            operation.</param>
+            <param name="claims">The properties of the claims.</param>
+            <param name="correlationId">An operation ID used for
+            troubleshooting.</param>
+            <param name="httpRequest">The details of the operation.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.TenantId">
+            <summary>
+            Gets or sets the tenant ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.ResourceGroup">
+            <summary>
+            Gets or sets the resource group of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.ResourceProvider">
+            <summary>
+            Gets or sets the resource provider performing the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.ResourceUri">
+            <summary>
+            Gets or sets the URI of the resource in the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.OperationName">
+            <summary>
+            Gets or sets the operation that was performed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.Status">
+            <summary>
+            Gets or sets the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.Authorization">
+            <summary>
+            Gets or sets the requested authorization for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.Claims">
+            <summary>
+            Gets or sets the properties of the claims.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.CorrelationId">
+            <summary>
+            Gets or sets an operation ID used for troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.ResourceWriteSuccessData.HttpRequest">
+            <summary>
+            Gets or sets the details of the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for an
+            Microsoft.Storage.BlobCreated event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the StorageBlobCreatedEventData
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.#ctor(System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.String,System.String,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the StorageBlobCreatedEventData
+            class.
+            </summary>
+            <param name="api">The name of the API/operation that triggered this
+            event.</param>
+            <param name="clientRequestId">A request id provided by the client
+            of the storage API operation that triggered this event.</param>
+            <param name="requestId">The request id generated by the Storage
+            service for the storage API operation that triggered this
+            event.</param>
+            <param name="eTag">The etag of the object at the time this event
+            was triggered.</param>
+            <param name="contentType">The content type of the blob. This is the
+            same as what would be returned in the Content-Type header from the
+            blob.</param>
+            <param name="contentLength">The size of the blob in bytes. This is
+            the same as what would be returned in the Content-Length header
+            from the blob.</param>
+            <param name="blobType">The type of blob.</param>
+            <param name="url">The path to the blob.</param>
+            <param name="sequencer">An opaque string value representing the
+            logical sequence of events for any particular blob name. Users can
+            use standard string comparison to understand the relative sequence
+            of two events on the same blob name.</param>
+            <param name="storageDiagnostics">For service use only. Diagnostic
+            data occasionally included by the Azure Storage service. This
+            property should be ignored by event consumers.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.Api">
+            <summary>
+            Gets or sets the name of the API/operation that triggered this
+            event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.ClientRequestId">
+            <summary>
+            Gets or sets a request id provided by the client of the storage API
+            operation that triggered this event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.RequestId">
+            <summary>
+            Gets or sets the request id generated by the Storage service for
+            the storage API operation that triggered this event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.ETag">
+            <summary>
+            Gets or sets the etag of the object at the time this event was
+            triggered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.ContentType">
+            <summary>
+            Gets or sets the content type of the blob. This is the same as what
+            would be returned in the Content-Type header from the blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.ContentLength">
+            <summary>
+            Gets or sets the size of the blob in bytes. This is the same as
+            what would be returned in the Content-Length header from the blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.BlobType">
+            <summary>
+            Gets or sets the type of blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.Url">
+            <summary>
+            Gets or sets the path to the blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.Sequencer">
+            <summary>
+            Gets or sets an opaque string value representing the logical
+            sequence of events for any particular blob name. Users can use
+            standard string comparison to understand the relative sequence of
+            two events on the same blob name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobCreatedEventData.StorageDiagnostics">
+            <summary>
+            Gets or sets for service use only. Diagnostic data occasionally
+            included by the Azure Storage service. This property should be
+            ignored by event consumers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData">
+            <summary>
+            Schema of the Data property of an EventGridEvent for an
+            Microsoft.Storage.BlobDeleted event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.#ctor">
+            <summary>
+            Initializes a new instance of the StorageBlobDeletedEventData
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the StorageBlobDeletedEventData
+            class.
+            </summary>
+            <param name="api">The name of the API/operation that triggered this
+            event.</param>
+            <param name="clientRequestId">A request id provided by the client
+            of the storage API operation that triggered this event.</param>
+            <param name="requestId">The request id generated by the Storage
+            service for the storage API operation that triggered this
+            event.</param>
+            <param name="contentType">The content type of the blob. This is the
+            same as what would be returned in the Content-Type header from the
+            blob.</param>
+            <param name="blobType">The type of blob.</param>
+            <param name="url">The path to the blob.</param>
+            <param name="sequencer">An opaque string value representing the
+            logical sequence of events for any particular blob name. Users can
+            use standard string comparison to understand the relative sequence
+            of two events on the same blob name.</param>
+            <param name="storageDiagnostics">For service use only. Diagnostic
+            data occasionally included by the Azure Storage service. This
+            property should be ignored by event consumers.</param>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.Api">
+            <summary>
+            Gets or sets the name of the API/operation that triggered this
+            event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.ClientRequestId">
+            <summary>
+            Gets or sets a request id provided by the client of the storage API
+            operation that triggered this event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.RequestId">
+            <summary>
+            Gets or sets the request id generated by the Storage service for
+            the storage API operation that triggered this event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.ContentType">
+            <summary>
+            Gets or sets the content type of the blob. This is the same as what
+            would be returned in the Content-Type header from the blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.BlobType">
+            <summary>
+            Gets or sets the type of blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.Url">
+            <summary>
+            Gets or sets the path to the blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.Sequencer">
+            <summary>
+            Gets or sets an opaque string value representing the logical
+            sequence of events for any particular blob name. Users can use
+            standard string comparison to understand the relative sequence of
+            two events on the same blob name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.Models.StorageBlobDeletedEventData.StorageDiagnostics">
+            <summary>
+            Gets or sets for service use only. Diagnostic data occasionally
+            included by the Azure Storage service. This property should be
+            ignored by event consumers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.EventGridClient">
+            <summary>
+            EventGrid Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.ApiVersion">
+            <summary>
+            Version of the API to be used with the client request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.EventGridClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the EventGridClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the EventGridClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the EventGridClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the EventGridClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClient.PublishEventsWithHttpMessagesAsync(System.String,System.Collections.Generic.IList{Microsoft.Azure.EventGrid.Models.EventGridEvent},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Publishes a batch of events to an Azure Event Grid topic.
+            </summary>
+            <param name='topicHostname'>
+            The host name of the topic, e.g. topic1.westus2-1.eventgrid.azure.net
+            </param>
+            <param name='events'>
+            An array of events to be published to Event Grid.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.EventGridClientExtensions">
+            <summary>
+            Extension methods for EventGridClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.EventGridClientExtensions.PublishEventsAsync(Microsoft.Azure.EventGrid.IEventGridClient,System.String,System.Collections.Generic.IList{Microsoft.Azure.EventGrid.Models.EventGridEvent},System.Threading.CancellationToken)">
+            <summary>
+            Publishes a batch of events to an Azure Event Grid topic.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='topicHostname'>
+            The host name of the topic, e.g. topic1.westus2-1.eventgrid.azure.net
+            </param>
+            <param name='events'>
+            An array of events to be published to Event Grid.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.Azure.EventGrid.IEventGridClient">
+            <summary>
+            EventGrid Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.SerializationSettings">
+            <summary>
+            The base URI of the service.
+            </summary>
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.ApiVersion">
+            <summary>
+            Version of the API to be used with the client request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.EventGrid.IEventGridClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.EventGrid.IEventGridClient.PublishEventsWithHttpMessagesAsync(System.String,System.Collections.Generic.IList{Microsoft.Azure.EventGrid.Models.EventGridEvent},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Publishes a batch of events to an Azure Event Grid topic.
+            </summary>
+            <param name='topicHostname'>
+            The host name of the topic, e.g.
+            topic1.westus2-1.eventgrid.azure.net
+            </param>
+            <param name='events'>
+            An array of events to be published to Event Grid.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

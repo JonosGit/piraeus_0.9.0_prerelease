@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Timers;
 using SkunkLab.Protocols.Mqtt.Handlers;
@@ -224,13 +225,21 @@ namespace SkunkLab.Protocols.Mqtt
                     keepaliveTimer.Elapsed += KeepaliveTimer_Elapsed;
                     keepaliveTimer.Start();
                 }
+                else
+                {
+                    keepaliveTimer.Stop();
+                    keepaliveTimer = new Timer(Convert.ToDouble(value * 1000));
+                    keepaliveTimer.Elapsed += KeepaliveTimer_Elapsed;
+                    keepaliveTimer.Start();
+                }
 
-
+                IncrementKeepAlive();
             }
         }
         internal void IncrementKeepAlive()
         {
-            keepaliveExpiry = DateTime.UtcNow.AddSeconds(Convert.ToDouble(_keepaliveSeconds));
+            keepaliveExpiry = DateTime.Now.AddSeconds(Convert.ToDouble(_keepaliveSeconds));
+            Trace.TraceWarning("Keep alive incremented to {0}", keepaliveExpiry.ToUniversalTime().ToString());
         }
 
         internal void StopKeepAlive()
@@ -242,15 +251,24 @@ namespace SkunkLab.Protocols.Mqtt
         private void KeepaliveTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             //communicates to server keep alive expired
-            if (keepaliveExpiry.AddSeconds(Convert.ToDouble(_keepaliveSeconds) * 1.5) < DateTime.UtcNow)
+            double serverIncrement = Convert.ToDouble(_keepaliveSeconds) * 1.5;
+            DateTime serverExpiry = keepaliveExpiry.AddSeconds(serverIncrement);
+            if(serverExpiry < DateTime.Now)
             {
+                Trace.TraceWarning("Server keep alive signal close with Server Expiry {0} and KA Expiry {1}", serverExpiry.ToString(), keepaliveExpiry.ToString());
                 OnKeepAliveExpiry?.Invoke(this, null);
-                return;
+            }
+            else
+            {
+                Console.WriteLine("Server keep alive NOT expired with Server Expiry {0} and KA Expiry {1}", serverExpiry.ToString(), keepaliveExpiry.ToString());
             }
 
-            //signals client to send a ping to keep alive
-            if (keepaliveExpiry > DateTime.UtcNow)
+
+            //communicates client keep alive needs to be signaled
+            DateTime now = DateTime.UtcNow;
+            if(keepaliveExpiry < now)
             {
+                Trace.TraceWarning("Server keep alive signal close with Current Time {0} and KA Expiry {1}", now.ToString(), keepaliveExpiry.ToString());
                 OnKeepAlive?.Invoke(this, new MqttMessageEventArgs(new PingRequestMessage()));
             }
         }

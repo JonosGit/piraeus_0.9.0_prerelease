@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -17,6 +18,7 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
             sendQueue = new TaskQueue();
+            queue = new ConcurrentQueue<byte[]>();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -27,6 +29,7 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
             sendQueue = new TaskQueue();
+            queue = new ConcurrentQueue<byte[]>();
         }
 
         public WebSocketClientChannel(Uri endpointUri, string securityToken, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -38,6 +41,7 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
             sendQueue = new TaskQueue();
+            queue = new ConcurrentQueue<byte[]>();
         }
 
         public WebSocketClientChannel(Uri endpointUri, X509Certificate2 certificate, string subProtocol, WebSocketConfig config, CancellationToken token)
@@ -49,7 +53,8 @@ namespace SkunkLab.Channels.WebSocket
             this.token = token;
             Id = "ws-" + Guid.NewGuid().ToString();
             sendQueue = new TaskQueue();
-           
+            queue = new ConcurrentQueue<byte[]>();
+
         }
 
         #endregion
@@ -64,6 +69,7 @@ namespace SkunkLab.Channels.WebSocket
         private ChannelState _state;
         private bool disposed;
         private TaskQueue sendQueue;
+        private ConcurrentQueue<byte[]> queue;
 
 
         public override event EventHandler<ChannelReceivedEventArgs> OnReceive;
@@ -71,9 +77,15 @@ namespace SkunkLab.Channels.WebSocket
         public override event EventHandler<ChannelOpenEventArgs> OnOpen;
         public override event EventHandler<ChannelErrorEventArgs> OnError;
         public override event EventHandler<ChannelStateEventArgs> OnStateChange;
+        
 
         
         public override string Id { get;  internal set; }
+
+        public override bool RequireBlocking
+        {
+            get { return false; }
+        }
 
         public override string TypeId { get { return "WebSocket"; } }
 
@@ -256,33 +268,48 @@ namespace SkunkLab.Channels.WebSocket
 
         public override async Task SendAsync(byte[] message)
         {
-            if(message.Length > config.MaxIncomingMessageSize)
+            if (message.Length > config.MaxIncomingMessageSize)
             {
                 throw new InvalidOperationException("Exceeds max message size.");
             }
 
+            queue.Enqueue(message);
+            
+
             try
             {
-
-                if (message.Length <= config.SendBufferSize)
+                while (!queue.IsEmpty)
                 {
-                    await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token));
-                }
-                else
-                {
-                    int offset = 0;
-                    byte[] buffer = null;
-                    while (message.Length - offset > config.SendBufferSize)
+                    byte[] msg = null;
+                    bool isDequeued = queue.TryDequeue(out msg);
+                    if (isDequeued)
                     {
-                        buffer = new byte[config.SendBufferSize];
-                        Buffer.BlockCopy(message, offset, buffer, 0, buffer.Length);
-                        await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
+                        if (msg.Length <= config.SendBufferSize)
+                        {
+                            await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(msg), WebSocketMessageType.Binary, true, token));
+                            //Task task = sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(msg), WebSocketMessageType.Binary, true, token));
+                            //Task.WaitAll(task);
+                        }
+                        else
+                        {
+                            int offset = 0;
+                            byte[] buffer = null;
+                            while (msg.Length - offset > config.SendBufferSize)
+                            {
+                                buffer = new byte[config.SendBufferSize];
+                                Buffer.BlockCopy(msg, offset, buffer, 0, buffer.Length);
+                                await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
+                                //Task t = sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
+                                //Task.WaitAll(t);
+                                offset += buffer.Length;
+                            }
 
-                        offset += buffer.Length;
+                            buffer = new byte[msg.Length - offset];
+                            await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
+                            //Task task = sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
+                            //Task.WaitAll(task);
+                        }
                     }
-
-                    buffer = new byte[message.Length - offset];
-                    await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
                 }
             }
             catch(Exception ex)
@@ -290,6 +317,42 @@ namespace SkunkLab.Channels.WebSocket
                 await SkunkLab.Diagnostics.Logging.Log.LogWarningAsync("Web socket client send fail.");
                 await SkunkLab.Diagnostics.Logging.Log.LogErrorAsync(ex.Message);
             }
+
+
+            //if(message.Length > config.MaxIncomingMessageSize)
+            //{
+            //    throw new InvalidOperationException("Exceeds max message size.");
+            //}
+
+            //try
+            //{
+
+            //    if (message.Length <= config.SendBufferSize)
+            //    {
+            //        await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(message), WebSocketMessageType.Binary, true, token));
+            //    }
+            //    else
+            //    {
+            //        int offset = 0;
+            //        byte[] buffer = null;
+            //        while (message.Length - offset > config.SendBufferSize)
+            //        {
+            //            buffer = new byte[config.SendBufferSize];
+            //            Buffer.BlockCopy(message, offset, buffer, 0, buffer.Length);
+            //            await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, token));
+
+            //            offset += buffer.Length;
+            //        }
+
+            //        buffer = new byte[message.Length - offset];
+            //        await sendQueue.Enqueue(() => client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, true, token));
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    await SkunkLab.Diagnostics.Logging.Log.LogWarningAsync("Web socket client send fail.");
+            //    await SkunkLab.Diagnostics.Logging.Log.LogErrorAsync(ex.Message);
+            //}
             
         }
 

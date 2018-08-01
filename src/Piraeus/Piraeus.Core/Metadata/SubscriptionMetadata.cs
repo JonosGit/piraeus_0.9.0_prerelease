@@ -136,5 +136,8 @@ namespace Piraeus.Core.Metadata
 
         [JsonProperty("durableMessaging")]
         public bool DurableMessaging { get; set; }
+
+        [JsonProperty("claimKey")]
+        public string ClaimKey { get; set; }
     }
 }

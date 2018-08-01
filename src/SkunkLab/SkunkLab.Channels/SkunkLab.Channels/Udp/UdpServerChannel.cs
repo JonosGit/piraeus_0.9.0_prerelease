@@ -35,6 +35,11 @@ namespace SkunkLab.Channels.Udp
 
         public override string Id { get; internal set; }
 
+        public override bool RequireBlocking
+        {
+            get { return false; }
+        }
+
         public override string TypeId { get { return "UDP"; } }
 
         public override int Port { get; internal set; }

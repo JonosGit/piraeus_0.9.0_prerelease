@@ -6,6 +6,7 @@ namespace SkunkLab.Security.Tokens
     using System.IdentityModel.Tokens;
     using System.Net;
     using System.Security.Cryptography.X509Certificates;
+
     public class X509CertificateToken : SecurityToken
     {
         public X509CertificateToken(X509Certificate2 certificate)

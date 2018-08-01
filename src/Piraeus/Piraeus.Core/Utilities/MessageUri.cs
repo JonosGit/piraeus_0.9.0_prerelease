@@ -47,6 +47,8 @@ namespace Piraeus.Core.Utilities
         public string SecurityToken { get; internal set; }
         public string TokenType { get; internal set; }
 
+        public string CacheKey { get; internal set; }
+
         private IEnumerable<KeyValuePair<string, string>> items;
 
         private void Read(string uriString)
@@ -56,6 +58,7 @@ namespace Piraeus.Core.Utilities
             TokenType = GetSingleParameter(QueryStringConstants.TOKEN_TYPE);
             SecurityToken = GetSingleParameter(QueryStringConstants.SECURITY_TOKEN);
             MessageId = GetSingleParameter(QueryStringConstants.MESSAGE_ID);
+            CacheKey = GetSingleParameter(QueryStringConstants.CACHE_KEY);
             Subscriptions = GetEnumerableParameters(QueryStringConstants.SUBSCRIPTION);
             Indexes = BuildIndexes(GetEnumerableParameters(QueryStringConstants.INDEX));
         }
@@ -71,6 +74,7 @@ namespace Piraeus.Core.Utilities
             IEnumerable<string> indexes = GetEnumerableHeaders(HttpHeaderConstants.INDEX_HEADER, request);
             Indexes = BuildIndexes(indexes);
             IEnumerable<string> messageIds = GetEnumerableHeaders(HttpHeaderConstants.MESSAGEID_HEADER, request);
+            IEnumerable<string> cachekeys = GetEnumerableHeaders(HttpHeaderConstants.CACHE_KEY, request);
 
             if (resources != null && resources.Count() == 1)
             {
@@ -80,6 +84,11 @@ namespace Piraeus.Core.Utilities
             if (messageIds != null && messageIds.Count() == 1)
             {
                 this.MessageId = messageIds.First();
+            }
+
+            if(cachekeys != null && cachekeys.Count() == 1)
+            {
+                this.CacheKey = cachekeys.First();
             }
 
             string contentType = GetSingleParameter(QueryStringConstants.CONTENT_TYPE);

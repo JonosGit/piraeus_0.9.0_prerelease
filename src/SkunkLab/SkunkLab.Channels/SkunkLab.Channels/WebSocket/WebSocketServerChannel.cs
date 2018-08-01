@@ -53,6 +53,11 @@ namespace SkunkLab.Channels.WebSocket
 
         public override string Id { get; internal set; }
 
+        public override bool RequireBlocking
+        {
+            get { return false; }
+        }
+
         public override string TypeId { get { return "WebSocket"; } }
 
         public override int Port { get; internal set; }

@@ -16,8 +16,8 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
-        [Parameter(HelpMessage = "Host name of Azure Blob Storage, e.g, <host>.blob.core.windows.net", Mandatory = true)]
-        public string Host;
+        [Parameter(HelpMessage = "Account name of Azure Blob Storage, e.g, <account>.blob.core.windows.net", Mandatory = true)]
+        public string Account;
 
         [Parameter(HelpMessage = "Name of container to write messages.  If omitted writes to $Root.", Mandatory = false)]
         public string Container;
@@ -44,11 +44,11 @@ namespace Piraeus.Module
 
             if (string.IsNullOrEmpty(Filename))
             {
-                uriString = String.Format("https://{0}.blob.core.windows.net?container={1}&blobtype={2}&clients={3}", Host, Container, BlobType.ToString(), NumClients <= 0 ? 1 : NumClients);
+                uriString = String.Format("https://{0}.blob.core.windows.net?container={1}&blobtype={2}&clients={3}", Account, Container, BlobType.ToString(), NumClients <= 0 ? 1 : NumClients);
             }
             else
             {
-                uriString = String.Format("https://{0}.blob.core.windows.net?container={1}&blobtype={2}&clients={3}&file={4}", Host, Container, BlobType.ToString(), NumClients <= 0 ? 1 : NumClients, Filename);
+                uriString = String.Format("https://{0}.blob.core.windows.net?container={1}&blobtype={2}&clients={3}&file={4}", Account, Container, BlobType.ToString(), NumClients <= 0 ? 1 : NumClients, Filename);
             }
 
             SubscriptionMetadata metadata = new SubscriptionMetadata()

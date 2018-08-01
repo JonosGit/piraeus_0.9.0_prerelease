@@ -25,6 +25,7 @@ namespace Piraeus.Adapters
             this.config = config;
             Channel = channel;
             auditor = new Auditor();
+            userAuditor = new UserAuditor();
         }
 
         public override IChannel Channel { get; set; }
@@ -39,7 +40,8 @@ namespace Piraeus.Adapters
         private bool disposedValue;
         private Auditor auditor;
         private string identity;
-
+        private UserAuditor userAuditor;
+        private bool closing;
         
 
         public override void Init()
@@ -81,6 +83,14 @@ namespace Piraeus.Adapters
             adapter.OnObserve += Adapter_OnObserve;
             HttpRequestMessage request = (HttpRequestMessage)e.Message;
 
+
+            if (userAuditor.CanAudit)
+            {
+                UserLogRecord record = new UserLogRecord(Channel.Id, identity, config.Identity.Client.IdentityClaimType, Channel.TypeId, String.Format("REST-{0}", request.Method.ToString()), "Granted", DateTime.UtcNow);
+                Task logTask = userAuditor.WriteAuditRecordAsync(record);
+                Task.WhenAll(logTask);
+            }
+
             if (request.Method == HttpMethod.Get)
             {
                 foreach (var item in uri.Subscriptions)
@@ -101,13 +111,24 @@ namespace Piraeus.Adapters
                 {
                     ResourceMetadata metadata = await GraphManager.GetResourceMetadataAsync(uri.Resource);
                     EventMessage message = new EventMessage(uri.ContentType, uri.Resource, ProtocolType.REST, buffer, DateTime.UtcNow, metadata.Audit);
+
+                    if (!string.IsNullOrEmpty(uri.CacheKey))
+                    {
+                        message.CacheKey = uri.CacheKey;
+                    }
+
                     List<KeyValuePair<string, string>> indexList = uri.Indexes == null ? null : new List<KeyValuePair<string, string>>(uri.Indexes);
 
                     await PublishAsync(decoder.Id, message, indexList);
+                    await Channel.CloseAsync();
                 });
 
-                Task.WhenAll(t);            
+                Task.WhenAll(t);
+
+                
             }
+
+            
         }
 
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
@@ -122,7 +143,21 @@ namespace Piraeus.Adapters
 
         private void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
-            OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
+            if (!closing)
+            {
+                closing = true;
+
+                if (userAuditor.CanAudit)
+                {
+                    UserLogRecord record = userAuditor.GetAuditRecord(Channel.Id, identity);
+                    record.LogoutTime = DateTime.UtcNow;
+
+                    Task t = userAuditor.WriteAuditRecordAsync(record);
+                    Task.WhenAll(t);
+                }
+
+                OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(Channel.Id));
+            }
         }
 
         #region Adapter event

@@ -1,15 +1,19 @@
-﻿using System.Text;
-using Org.BouncyCastle.Crypto.Tls;
+﻿using Org.BouncyCastle.Crypto.Tls;
+using System.Collections.Generic;
+using System.Security;
+using System.Text;
 
 namespace SkunkLab.Channels.Tcp
 {
     public class PskIdentityManager : TlsPskIdentityManager
     {
-        public PskIdentityManager(string identity, byte[] psk)
+        
+        public PskIdentityManager(Dictionary<string, byte[]> psks)
         {
-            this.identity = Encoding.UTF8.GetBytes(identity);
-            this.psk = psk;
+            container = psks;
         }
+
+        private Dictionary<string, byte[]> container;
 
         public PskIdentityManager(byte[] psk)
         {
@@ -17,15 +21,22 @@ namespace SkunkLab.Channels.Tcp
         }
 
         private byte[] psk;
-        private byte[] identity;
         public byte[] GetHint()
         {
-            return identity;
+            return null;
         }
 
         public byte[] GetPsk(byte[] identity)
         {
-            return psk;
+            string identityString = Encoding.UTF8.GetString(identity);
+            if(container.ContainsKey(identityString))
+            {
+                return container[identityString];
+            }
+            else
+            {
+                throw new SecurityException("Identity not found for PSK");
+            }
         }
     }
 }

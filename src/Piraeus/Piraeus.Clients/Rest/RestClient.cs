@@ -41,9 +41,9 @@ namespace Piraeus.Clients.Rest
         private IChannel receiveChannel;
         private HttpClientChannel sendChannel;
 
-        public async Task SendAsync(string resourceUriString, string contentType, byte[] message, List<KeyValuePair<string, string>> indexes = null)
+        public async Task SendAsync(string resourceUriString, string contentType, byte[] message, string cacheKey = null, List<KeyValuePair<string, string>> indexes = null)
         {
-            await sendChannel.SendAsync(resourceUriString, contentType, message, indexes);
+            await sendChannel.SendAsync(resourceUriString, contentType, message, cacheKey, indexes);
         }
         
 

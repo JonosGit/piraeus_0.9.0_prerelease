@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Channels\ChannelsElement.cs" />
+    <Compile Include="Channels\PskCollectionElement.cs" />
     <Compile Include="Channels\PskElement.cs" />
     <Compile Include="Channels\TcpChannelElement.cs" />
     <Compile Include="Channels\WebSocketChannelElement.cs" />
     <Compile Include="Channels\X509Element.cs" />
+    <Compile Include="FakeConfig.cs" />
     <Compile Include="Identity\ClientElement.cs" />
     <Compile Include="Identity\IdentityElement.cs" />
     <Compile Include="Identity\IndexElement.cs" />

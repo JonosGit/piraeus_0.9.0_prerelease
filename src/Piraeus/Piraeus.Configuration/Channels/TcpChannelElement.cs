@@ -26,20 +26,28 @@ namespace Piraeus.Configuration.Channels
             get { return (int)base["maxBufferSize"]; }
             set { base["maxBufferSize"] = value; }
         }
-
-        [ConfigurationProperty("presharedkey", IsRequired = false)]
-        public PskElement PSK
-        {
-            get { return (PskElement)base["presharedkey"]; }
-            set { base["presharedkey"] = value; }
-        }
-
-        [ConfigurationProperty("certificate", IsRequired =false)]
+        [ConfigurationProperty("certificate", IsRequired = false)]
         public X509Element Certificate
         {
             get { return (X509Element)base["certificate"]; }
             set { base["certificate"] = value; }
         }
+
+        //[ConfigurationProperty("presharedkey", IsRequired = false)]
+        //public PskElement PSK
+        //{
+        //    get { return (PskElement)base["presharedkey"]; }
+        //    set { base["presharedkey"] = value; }
+        //}
+
+        [ConfigurationProperty("presharedKeys", IsRequired = false)]
+        public PskCollectionElement PresharedKeys
+        {
+            get { return (PskCollectionElement)base["presharedKeys"]; }
+            set { base["presharedKeys"] = value; }
+        }
+
+        
 
 
        

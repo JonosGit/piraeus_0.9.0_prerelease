@@ -76,10 +76,9 @@ namespace SkunkLab.Listeners.Tcp
             {
                 try
                 {
-
                     TcpClient client = await listener.AcceptTcpClientAsync();
                     client.LingerState = new LingerOption(true, 0);
-                    client.NoDelay = true;
+                    client.NoDelay = true;                   
                     client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                     client.Client.UseOnlyOverlappedIO = true;
 
@@ -116,8 +115,18 @@ namespace SkunkLab.Listeners.Tcp
             adapter.OnError += Adapter_OnError;
             adapter.OnClose += Adapter_OnClose;
             adapter.Init();
-            Task openTask = adapter.Channel.OpenAsync();
-            Task.WhenAll(openTask);
+
+            if(adapter.Channel.RequireBlocking)
+            {
+                Task openTask1 = adapter.Channel.OpenAsync();
+                Task.WaitAll(openTask1);
+            }
+            else
+            {
+                Task openTask2 = adapter.Channel.OpenAsync();
+                Task.WhenAll(openTask2);
+            }
+            
             Task receiveTask = adapter.Channel.ReceiveAsync();
             Task.WhenAll(receiveTask);
         }

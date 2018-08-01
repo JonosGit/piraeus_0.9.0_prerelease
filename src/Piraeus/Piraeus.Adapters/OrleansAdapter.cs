@@ -12,6 +12,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Piraeus.Grains.Notifications;
 using System.Diagnostics;
+using System.Security;
+using SkunkLab.Security.Identity;
 
 namespace Piraeus.Adapters
 {
@@ -41,6 +43,11 @@ namespace Piraeus.Adapters
         private Dictionary<string, IMessageObserver> durableObservers;   //subscription, observer
         private System.Timers.Timer leaseTimer; //timer for leases
         private bool disposedValue = false; // To detect redundant calls
+
+        public string Identity
+        {
+            set { identity = value; }
+        }
 
         public override async Task<List<string>> LoadDurableSubscriptionsAsync(string identity)
         {
@@ -133,7 +140,7 @@ namespace Piraeus.Adapters
 
             if (!authz)
             {                
-                await Log.LogWarningAsync("Identity '{0}' is not authorized to publish to resource '{1}'", this.identity, metadata.ResourceUriString);
+                await Log.LogWarningAsync("Identity '{0}' is not authorized to publish to resource '{1}'", this.identity, metadata.ResourceUriString); 
             }
 
             return authz;

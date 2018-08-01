@@ -69,6 +69,11 @@ namespace SkunkLab.Channels.Http
 
         public override string Id { get; internal set; }
 
+        public override bool RequireBlocking
+        {
+            get { return false; }
+        }
+
         public override string TypeId { get { return "HTTP"; } }
 
         public override bool IsConnected { get; }

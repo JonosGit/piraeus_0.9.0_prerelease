@@ -28,24 +28,26 @@ namespace SkunkLab.Channels.Http
             this.certificate = certificate;
         }
 
-        public HttpClientChannel(string endpoint, string resourceUriString, string contentType, string securityToken, List<KeyValuePair<string, string>> indexes = null)
+        public HttpClientChannel(string endpoint, string resourceUriString, string contentType, string securityToken, string cacheKey = null, List<KeyValuePair<string, string>> indexes = null)
         {
             Id = "http-" + Guid.NewGuid().ToString();
             requestUri = new Uri(endpoint);
             this.contentType = contentType;
             this.securityToken = securityToken;
             this.resourceUriString = resourceUriString;
+            this.cacheKey = cacheKey;
             this.indexes = indexes;
         }
 
         
-        public HttpClientChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, List<KeyValuePair<string, string>> indexes = null)
+        public HttpClientChannel(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, string cacheKey = null, List<KeyValuePair<string, string>> indexes = null)
         {
             Id = "http-" + Guid.NewGuid().ToString();
             requestUri = new Uri(endpoint);
             this.contentType = contentType;
             this.certificate = certificate;
             this.resourceUriString = resourceUriString;
+            this.cacheKey = cacheKey;
             this.indexes = indexes;
         }
 
@@ -100,6 +102,13 @@ namespace SkunkLab.Channels.Http
         private CancellationToken token;
         private bool disposed;
         private ChannelState _state;
+        private string cacheKey;
+
+        public override bool RequireBlocking
+        {
+            get { return false; }
+        }
+
 
         public override bool IsAuthenticated { get; internal set; }
 
@@ -242,10 +251,11 @@ namespace SkunkLab.Channels.Http
             }
         }
 
-        public async Task SendAsync(string resourceUriString, string contentType, byte[] message, List<KeyValuePair<string,string>> indexes = null)
+        public async Task SendAsync(string resourceUriString, string contentType, byte[] message, string cacheKey = null, List<KeyValuePair<string,string>> indexes = null)
         {
             this.resourceUriString = resourceUriString;
             this.contentType = contentType;
+            this.cacheKey = cacheKey;
             this.indexes = indexes;
             await SendAsync(message);
         }
@@ -366,6 +376,11 @@ namespace SkunkLab.Channels.Http
                 Uri resourceUri = new Uri(resourceUriString.ToLower(CultureInfo.InvariantCulture));
 
                 request.Headers.Add(HttpChannelConstants.RESOURCE_HEADER, resourceUri.ToString());
+
+                if(!string.IsNullOrEmpty(cacheKey))
+                {
+                    request.Headers.Add(HttpChannelConstants.CACHE_KEY, cacheKey);
+                }
 
                 if (indexes != null)
                 {

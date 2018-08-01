@@ -76,7 +76,16 @@ namespace Piraeus.Adapters
         /// <returns></returns>
         public static ProtocolAdapter Create(PiraeusConfig config, IAuthenticator authenticator, TcpClient client, CancellationToken token)
         {
-            IChannel channel = ChannelFactory.Create(config.Channels.Tcp.UseLengthPrefix, client, config.Channels.Tcp.BlockSize, config.Channels.Tcp.MaxBufferSize, token);
+            IChannel channel = null;
+
+            if (config.Channels.Tcp.PresharedKeys != null)
+            {
+                channel = ChannelFactory.Create(config.Channels.Tcp.UseLengthPrefix, client, config.Channels.Tcp.PresharedKeys, config.Channels.Tcp.BlockSize, config.Channels.Tcp.MaxBufferSize, token);                
+            }
+            else
+            {
+                channel = ChannelFactory.Create(config.Channels.Tcp.UseLengthPrefix, client, config.Channels.Tcp.BlockSize, config.Channels.Tcp.MaxBufferSize, token);
+            }
             
             IPEndPoint localEP = (IPEndPoint)client.Client.LocalEndPoint;
             int port = localEP.Port;

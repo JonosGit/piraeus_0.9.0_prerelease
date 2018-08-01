@@ -16,8 +16,8 @@ namespace Piraeus.Module
         [Parameter(HelpMessage = "Unique URI identifier of resource to subscribe.", Mandatory = true)]
         public string ResourceUriString;
 
-        [Parameter(HelpMessage = "Host name of Azure Queue Storage, e.g, <host>.queue.core.windows.net", Mandatory = true)]
-        public string Host;
+        [Parameter(HelpMessage = "Account name of Azure Queue Storage, e.g, <acconut>.queue.core.windows.net", Mandatory = true)]
+        public string Account;
 
         [Parameter(HelpMessage = "Name of queue to write messages.", Mandatory = true)]
         public string Queue;
@@ -34,8 +34,8 @@ namespace Piraeus.Module
 
         protected override void ProcessRecord()
         {
-            string uriString = TTL.HasValue ? String.Format("https://{0}.queue.core.windows.net?queue={1}&ttl={2}", Host, Queue, TTL.Value.ToString()) :
-                String.Format("https://{0}.queue.core.windows.net?queue={1}", Host, Queue);
+            string uriString = TTL.HasValue ? String.Format("https://{0}.queue.core.windows.net?queue={1}&ttl={2}", Account, Queue, TTL.Value.ToString()) :
+                String.Format("https://{0}.queue.core.windows.net?queue={1}", Account, Queue);
             
             SubscriptionMetadata metadata = new SubscriptionMetadata()
             {

@@ -30,9 +30,9 @@ namespace SkunkLab.Channels.Http
         /// <param name="contentType">HTTP content type of message</param>
         /// <param name="securityToken">Symmetric key security token as string</param>
         /// <param name="indexes">Optional indexes used to filter receivers.</param>
-        public static HttpChannel Create(string endpoint, string resourceUriString, string contentType, string securityToken, List<KeyValuePair<string,string>> indexes = null)
+        public static HttpChannel Create(string endpoint, string resourceUriString, string contentType, string securityToken, string cacheKey = null, List<KeyValuePair<string,string>> indexes = null)
         {
-            return new HttpClientChannel(endpoint, resourceUriString, contentType, securityToken, indexes);
+            return new HttpClientChannel(endpoint, resourceUriString, contentType, securityToken, cacheKey, indexes);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace SkunkLab.Channels.Http
         /// <param name="contentType">HTTP content type of message</param>
         /// <param name="certificate">X509 certificate used to authenticate the request.</param>
         /// <param name="indexes">Optional indexes used to filter receivers.</param>
-        public static HttpChannel Create(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, List<KeyValuePair<string, string>> indexes = null)
+        public static HttpChannel Create(string endpoint, string resourceUriString, string contentType, X509Certificate2 certificate, string cacheKey = null, List<KeyValuePair<string, string>> indexes = null)
         {
-            return new HttpClientChannel(endpoint, resourceUriString, contentType, certificate, indexes);
+            return new HttpClientChannel(endpoint, resourceUriString, contentType, certificate, cacheKey, indexes);
         }
 
         /// <summary>
@@ -103,7 +103,8 @@ namespace SkunkLab.Channels.Http
         #endregion
         
 
-        
+        public abstract bool RequireBlocking { get; }
+
         public abstract string TypeId { get; }
         public abstract int Port { get; internal set; }
         public abstract bool IsConnected { get;  }

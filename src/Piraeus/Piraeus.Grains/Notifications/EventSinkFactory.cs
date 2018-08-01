@@ -49,10 +49,18 @@ namespace Piraeus.Grains.Notifications
             {
                 return new ServiceBusTopicSink(metadata);
             }
-            //else if (uri.Scheme == "adl")
-            //{
-            //    return new DataLakeSink(metadata);
-            //}
+            else if (uri.Scheme == "adl")
+            {
+                return new DataLakeSink(metadata);
+            }
+            else if (uri.Scheme == "eventgrid")
+            {
+                return new EventGridSink(metadata);
+            }
+            else if(uri.Scheme == "redis")
+            {
+                return new RedisSink(metadata);
+            }
             else
             {
                 throw new InvalidOperationException(String.Format("EventSinkFactory cannot find concrete type for {0}", metadata.NotifyAddress));

@@ -836,10 +836,16 @@
         </member>
         <member name="M:Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter`1.CanConvert(System.Type)">
             <summary>
-            Returns true if the object being deserialized is the base type. False otherwise.
+            Returns true if the object being deserialized is assignable to the base type. False otherwise.
             </summary>
             <param name="objectType">The type of the object to check.</param>
-            <returns>True if the object being deserialized is the base type. False otherwise.</returns>
+            <returns>True if the object being deserialized is assignable to the base type. False otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter`1.SelectTokenCaseInsensitive(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Case insensitive (and reduced version) of JToken.SelectToken which unfortunately does not offer
+            such functionality and has made all potential extension points `internal`.
+            </summary>
         </member>
         <member name="M:Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter`1.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
             <summary>
@@ -1040,6 +1046,11 @@
             Indicates whether the ServiceClient has been disposed. 
             </summary>
         </member>
+        <member name="F:Microsoft.Rest.ServiceClient`1._disposeHttpClient">
+            <summary>
+            Flag to track if provided httpClient needs to disposed
+            </summary>
+        </member>
         <member name="F:Microsoft.Rest.ServiceClient`1._clientVersion">
             <summary>
             Field used for ClientVersion property
@@ -1114,11 +1125,12 @@
             Initializes a new instance of the ServiceClient class.
             </summary>
         </member>
-        <member name="M:Microsoft.Rest.ServiceClient`1.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:Microsoft.Rest.ServiceClient`1.#ctor(System.Net.Http.HttpClient,System.Boolean)">
             <summary>
             Initializes a new instance of the ServiceClient class.
             </summary>
-            <param name="httpClient">HttpClient</param>
+            <param name="httpClient">HttpClient to be used</param>
+            <param name="disposeHttpClient">true: Will dispose the supplied httpClient on calling Dispose(). False: will not dispose</param>
         </member>
         <member name="M:Microsoft.Rest.ServiceClient`1.#ctor(System.Net.Http.DelegatingHandler[])">
             <summary>

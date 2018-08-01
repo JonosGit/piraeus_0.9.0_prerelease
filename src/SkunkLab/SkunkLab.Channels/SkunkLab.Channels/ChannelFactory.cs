@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SkunkLab.Channels.Http;
+using SkunkLab.Channels.Tcp;
+using SkunkLab.Channels.Udp;
+using SkunkLab.Channels.WebSocket;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
-using SkunkLab.Channels.Http;
-using SkunkLab.Channels.WebSocket;
 
 namespace SkunkLab.Channels
 {
@@ -49,9 +51,9 @@ namespace SkunkLab.Channels
         /// <param name="psk"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static IChannel Create(bool usePrefixLength, TcpClient client, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        public static IChannel Create(bool usePrefixLength, TcpClient client, Dictionary<string, byte[]> presharedKeys, int blockSize, int maxBufferSize, CancellationToken token)
         {
-            return TcpChannel.Create(usePrefixLength, client, pskIdentity, psk, blockSize, maxBufferSize, token);
+            return TcpChannel.Create(usePrefixLength, client, presharedKeys, blockSize, maxBufferSize, token);
         }
         
         #endregion
@@ -167,16 +169,116 @@ namespace SkunkLab.Channels
             return TcpChannel.Create(usePrefixLength, address, port, localEP, certificate, blockSize, maxBufferSize, token);
         }
 
+        
         /// <summary>
         /// Creates TCP client channel
         /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="address"></param>
+        /// <param name="port"></param>
+        /// <param name="localEP"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
         public static IChannel Create(bool usePrefixLength, IPAddress address, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
         {
             return TcpChannel.Create(usePrefixLength, address, port, localEP, pskIdentity, psk, blockSize, maxBufferSize, token);
         }
 
-       
+        /// <summary>
+        /// Creates TCP client channel
+        /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="address"></param>
+        /// <param name="port"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IChannel Create(bool usePrefixLength, IPAddress address, int port, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        {
+            return TcpChannel.Create(usePrefixLength, address, port, pskIdentity, psk, blockSize, maxBufferSize, token);
+        }
+
+
+        /// <summary>
+        /// Creates TCP client channel
+        /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="localEP"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, IPEndPoint localEP, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        {
+            return TcpChannel.Create(usePrefixLength, hostname, port, localEP, pskIdentity, psk, blockSize, maxBufferSize, token);
+        }
+
+        /// <summary>
+        /// Creates TCP client channel
+        /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IChannel Create(bool usePrefixLength, string hostname, int port, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        {
+            return TcpChannel.Create(usePrefixLength, hostname, port, pskIdentity, psk, blockSize, maxBufferSize, token);
+        }
+
+        /// <summary>
+        /// Creates TCP client channel
+        /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="remoteEP"></param>
+        /// <param name="localEP"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEP, IPEndPoint localEP, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        {
+            return TcpChannel.Create(usePrefixLength, remoteEP, localEP, pskIdentity, psk, blockSize, maxBufferSize, token);            
+        }
+
+        /// <summary>
+        /// Creates TCP client channel
+        /// </summary>
+        /// <param name="usePrefixLength"></param>
+        /// <param name="remoteEP"></param>
+        /// <param name="pskIdentity"></param>
+        /// <param name="psk"></param>
+        /// <param name="blockSize"></param>
+        /// <param name="maxBufferSize"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IChannel Create(bool usePrefixLength, IPEndPoint remoteEP, string pskIdentity, byte[] psk, int blockSize, int maxBufferSize, CancellationToken token)
+        {
+            return TcpChannel.Create(usePrefixLength, remoteEP, pskIdentity, psk, blockSize, maxBufferSize, token);
+        }
+
+
+
+
+
+
 
         #endregion
         #endregion

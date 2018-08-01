@@ -69,3 +69,8 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\ob
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\obj\Debug\Samples.Clients.Rest.exe
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\obj\Debug\Samples.Clients.Rest.pdb
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\obj\Debug\Samples.Clients.Rest.csproj.CopyComplete
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Net.Http.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Samples\Clients\Samples.Clients.Rest\bin\Debug\System.Security.Cryptography.X509Certificates.dll

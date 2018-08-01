@@ -8,11 +8,14 @@
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\DotNetty.Handlers.0.4.7\lib\net45\DotNetty.Handlers.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\DotNetty.Transport.0.4.7\lib\net45\DotNetty.Transport.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.Amqp.2.1.3\lib\net45\Microsoft.Azure.Amqp.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\Microsoft.Azure.DataLake.Store.1.1.6\lib\net452\Microsoft.Azure.DataLake.Store.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.Devices.Client.1.6.1\lib\net451\Microsoft.Azure.Devices.Client.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.Devices.1.5.0\lib\net451\Microsoft.Azure.Devices.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.Devices.Shared.1.4.0\lib\net451\Microsoft.Azure.Devices.Shared.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.DocumentDB.1.19.1\lib\net45\Microsoft.Azure.Documents.Client.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SiloHost\Piraeus.Silo\packages\Microsoft.Azure.EventGrid.1.2.0\lib\net452\Microsoft.Azure.EventGrid.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\Microsoft.Azure.Management.DataLake.Store.2.2.1\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.CodeAnalysis.CSharp.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.CodeAnalysis.Common.2.0.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll
@@ -23,14 +26,22 @@
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Extensions.DependencyInjection.1.1.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Extensions.Logging.Abstractions.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Extensions.Logging.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.17.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\TcpUdpGateway\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.17.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Orleans\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Orleans\packages\Microsoft.IdentityModel.Tokens.5.1.4\lib\net451\Microsoft.IdentityModel.Tokens.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.3.3\lib\net461\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SiloHost\Piraeus.Silo\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\WindowsAzure.ServiceBus.4.1.6\lib\net45\Microsoft.ServiceBus.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Mono.Security.5.4.0.201\build\net45\win\Mono.Security.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\NLog.4.4.12\lib\net45\NLog.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Orleans.Core.1.5.2\lib\net461\Orleans.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Orleans.OrleansAzureUtils.1.5.2\lib\net461\OrleansAzureUtils.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.Orleans.OrleansCodeGenerator.1.5.2\lib\net461\OrleansCodeGenerator.dll
@@ -47,6 +58,7 @@
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Protocols\SkunkLab.Protocols\bin\Debug\SkunkLab.Protocols.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Debug\SkunkLab.Security.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Storage\SkunkLab.Storage\bin\Debug\SkunkLab.Storage.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\SiloHost\Piraeus.Silo\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.Composition.dll
@@ -64,6 +76,7 @@
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll
+/r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Management.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll

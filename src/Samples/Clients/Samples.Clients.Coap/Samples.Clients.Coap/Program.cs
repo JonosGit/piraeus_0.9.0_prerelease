@@ -87,7 +87,9 @@ namespace Samples.Clients.Coap
                 goto endsample;
             }
 
-            source.Cancel();
+            Task t = channel.CloseAsync();
+            Task.WhenAll(t);
+            //source.Cancel();
 
             endsample:
             Console.WriteLine("client is closed...");
@@ -233,8 +235,10 @@ namespace Samples.Clients.Coap
                     //string message = String.Format("{0} sent message {1}", clientName, index);
                                         
                     byte[] payload = Encoding.UTF8.GetBytes(payloadString);
-                    
-                    Task pubTask = client.PublishAsync(publishResource, contentType, payload, false, PublishResponse);
+
+                    string cacheKey = String.Format("coapkey{0}", i);
+                    Task pubTask = client.PublishAsync(publishResource, contentType, payload, false, PublishResponse, cacheKey);
+                    //Task pubTask = client.PublishAsync(publishResource, contentType, payload, false, PublishResponse);
                     Task.WhenAll(pubTask);
 
                     if (delay > 0)

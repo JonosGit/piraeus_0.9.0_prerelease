@@ -11,6 +11,7 @@
         public static string CONTENT_TYPE_TEXT = "text/plain";
         public static string CONTENT_TYPE_XML = "application/xml";
         public static string CONTENT_TYPE_BYTE_ARRAY = "application/octet-stream";
+        public static string CACHE_KEY = "x-sl-cackekey";
     }
 
 

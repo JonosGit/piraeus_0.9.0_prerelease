@@ -141,6 +141,7 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\Skunk
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Protocols.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\SkunkLab.Security.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Algorithms.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Encoding.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Security.Cryptography.Primitives.dll
@@ -166,8 +167,8 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\Micro
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Web.Http.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\Microsoft.IdentityModel.Logging.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\bin\Debug\System.Net.Http.Formatting.xml
-C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojResolveAssemblyReference.cache
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csprojAssemblyReference.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CoreCompileInputs.cache
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CopyComplete
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.pdb
-C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Piraeus.Clients\obj\Debug\Piraeus.Clients.csproj.CopyComplete

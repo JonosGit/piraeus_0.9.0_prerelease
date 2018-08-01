@@ -122,7 +122,12 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Sec
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\Microsoft.IdentityModel.Tokens.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\Newtonsoft.Json.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.IdentityModel.Tokens.Jwt.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Net.Http.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Net.Http.Formatting.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Security.Cryptography.Algorithms.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Security.Cryptography.Encoding.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Security.Cryptography.Primitives.dll
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Security.Cryptography.X509Certificates.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Web.Http.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Web.Http.WebHost.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\Microsoft.IdentityModel.Logging.xml
@@ -132,8 +137,8 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Sec
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Net.Http.Formatting.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Web.Http.xml
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\bin\Release\System.Web.Http.WebHost.xml
+C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.csprojAssemblyReference.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.csproj.CoreCompileInputs.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.csproj.CopyComplete
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.pdb
-C:\_git\dev\piraeus_0.9.0_prerelease\src\SkunkLab\SkunkLab.Security\SkunkLab.Security\obj\Release\SkunkLab.Security.csprojResolveAssemblyReference.cache

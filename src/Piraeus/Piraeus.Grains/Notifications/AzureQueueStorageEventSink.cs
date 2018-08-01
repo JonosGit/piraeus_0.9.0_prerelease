@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Web;
 using System.Collections.Generic;
-
+using System.Collections.Concurrent;
 
 namespace Piraeus.Grains.Notifications
 {
@@ -20,10 +20,12 @@ namespace Piraeus.Grains.Notifications
         private TimeSpan? ttl;
         private Uri uri;
         private Auditor auditor;
+        private ConcurrentQueue<EventMessage> loadQueue;
 
         public AzureQueueStorageSink(SubscriptionMetadata metadata)
             : base(metadata)
         {
+            loadQueue = new ConcurrentQueue<EventMessage>();
             auditor = new Auditor();
             uri = new Uri(metadata.NotifyAddress);
             NameValueCollection nvc = HttpUtility.ParseQueryString(uri.Query);
@@ -57,31 +59,40 @@ namespace Piraeus.Grains.Notifications
         {
             AuditRecord record = null;
             byte[] payload = null;
+            EventMessage msg = null;
+            loadQueue.Enqueue(message);
 
             try
             {
-                payload = GetPayload(message);
-                if (payload == null)
+                while (!loadQueue.IsEmpty)
                 {
-                    Trace.TraceWarning("Subscription {0} could not write to queue storage sink because payload was either null or unknown protocol type.");
-                    return;
-                }
+                    bool isdequeued = loadQueue.TryDequeue(out msg);
+                    if (isdequeued)
+                    {
+                        payload = GetPayload(msg);
+                        if (payload == null)
+                        {
+                            Trace.TraceWarning("Subscription {0} could not write to queue storage sink because payload was either null or unknown protocol type.");
+                            return;
+                        }
 
-                await storage.EnqueueAsync(queue, payload, ttl);
+                        await storage.EnqueueAsync(queue, payload, ttl);
 
-                if (message.Audit && auditor.CanAudit)
-                {
-                    record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureQueue", "AzureQueue", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
+                        if (message.Audit && auditor.CanAudit)
+                        {
+                            record = new AuditRecord(msg.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureQueue", "AzureQueue", payload.Length, MessageDirectionType.Out, true, DateTime.UtcNow);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                record = new AuditRecord(message.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureQueue", "AzureQueue", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);
+                record = new AuditRecord(msg.MessageId, uri.Query.Length > 0 ? uri.ToString().Replace(uri.Query, "") : uri.ToString(), "AzureQueue", "AzureQueue", payload.Length, MessageDirectionType.Out, false, DateTime.UtcNow, ex.Message);
                 throw;
             }
             finally
             {
-                if (record != null && message.Audit && auditor.CanAudit)
+                if (record != null && msg.Audit && auditor.CanAudit)
                 {
                     await auditor.WriteAuditRecordAsync(record);
                 }

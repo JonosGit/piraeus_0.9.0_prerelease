@@ -1,4 +1,6 @@
-﻿using Piraeus.Grains;
+﻿using Piraeus.Configuration;
+using Piraeus.Configuration.Settings;
+using Piraeus.Grains;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,26 +21,34 @@ namespace WebGateway.Security
                 return;
             }
 
-            if (Orleans.GrainClient.IsInitialized)
+            try
             {
-                List<Claim> claimSet = await GraphManager.GetServiceIdentityClaimsAsync();
-                X509Certificate2 cert = await GraphManager.GetServiceIdentityCertificateAsync();
 
-                IsConfigured = cert != null || claimSet != null;
-
-                if (!IsConfigured)
+                if (Orleans.GrainClient.IsInitialized)
                 {
-                    IEnumerable<Claim> claimArray = Piraeus.Configuration.PiraeusConfigManager.Settings.Identity.Service.Claims;
-                    cert = Piraeus.Configuration.PiraeusConfigManager.Settings.Security.Service.Certificate;
-                    List<Claim> claimList = claimArray != null ? new List<Claim>(claimArray) : null;
-                    await GraphManager.SetServiceIdentityAsync(claimList, cert);
+                    List<Claim> claimSet = await GraphManager.GetServiceIdentityClaimsAsync();
+                    X509Certificate2 cert = await GraphManager.GetServiceIdentityCertificateAsync();
 
-                    IsConfigured = true;
+                    IsConfigured = cert != null || claimSet != null;
+
+                    if (!IsConfigured)
+                    {
+                        PiraeusConfig config = PiraeusConfigManager.Settings;
+
+                        IEnumerable<Claim> claimArray = config.Identity.Service.Claims;
+                        cert = config.Security.Service.Certificate;
+                        List<Claim> claimList = claimArray != null ? new List<Claim>(claimArray) : null;
+                        await GraphManager.SetServiceIdentityAsync(claimList, cert);
+
+                        IsConfigured = true;
+                    }
                 }
             }
-
-            
-        }
-        
+            catch(Exception ex)
+            {  
+                Trace.TraceError("Web gateway service identity config error {0}", ex.Message);
+                Trace.TraceError(ex.StackTrace);
+            }            
+        }        
     }
 }

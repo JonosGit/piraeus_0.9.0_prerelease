@@ -17,7 +17,6 @@ C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Pi
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.csproj.CoreCompileInputs.cache
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.dll
 C:\_git\core\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.pdb
-C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll.config
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.pdb
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Capl.dll
@@ -35,4 +34,5 @@ C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Pirae
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.csproj.CoreCompileInputs.cache
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.dll
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.pdb
+C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\bin\Release\Piraeus.Module.dll.config
 C:\_git\dev\piraeus_0.9.0_prerelease\src\Piraeus\Powershell\Piraeus.Module\Piraeus.Module\obj\Release\Piraeus.Module.csproj.CopyComplete

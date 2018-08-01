@@ -38,6 +38,8 @@ namespace SkunkLab.Channels.WebSocket
 
         public abstract string Id { get; internal set; }
 
+        public abstract bool RequireBlocking { get; }
+
         public abstract string TypeId { get; }
         public abstract int Port { get; internal set; }
         public abstract ChannelState State { get; internal set; }

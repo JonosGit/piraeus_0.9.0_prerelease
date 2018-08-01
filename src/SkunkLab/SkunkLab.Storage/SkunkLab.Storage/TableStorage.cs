@@ -143,15 +143,17 @@ namespace SkunkLab.Storage
 
             if (!string.IsNullOrEmpty(encryptKeyName))
             {
-                table.Execute(operation);
-            }
-            else
-            {
                 TableRequestOptions options = keyVault.GetEncryptionTableOptions(encryptKeyName);
                 table.Execute(operation, options);
             }
+            else
+            {
+                
+                table.Execute(operation);
+            }
         }
 
+        
         public async Task WriteAsync(string tableName, ITableEntity entity, string encryptKeyName = null)
         {
             if(entity == null)
@@ -240,7 +242,7 @@ namespace SkunkLab.Storage
 
             TableQuerySegment<T> segment = null;
 
-            if (!string.IsNullOrEmpty(encryptKeyName))
+            if (string.IsNullOrEmpty(encryptKeyName))
             {
                 segment = table.ExecuteQuerySegmented<T>(query, new TableContinuationToken());
             }

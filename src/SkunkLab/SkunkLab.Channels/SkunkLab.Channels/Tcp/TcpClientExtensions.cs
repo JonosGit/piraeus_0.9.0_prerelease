@@ -1,36 +1,61 @@
-﻿using System.Net.Sockets;
-using Org.BouncyCastle.Crypto.Tls;
+﻿using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Security;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Sockets;
 
 namespace SkunkLab.Channels.Tcp
 {
     public static class TcpClientExtensions
     {
-        public static TlsClientProtocol ConnectPskTlsClient(this TcpClient client, string identity, byte[] psk, SecureRandom srandom)
+        public static TlsClientProtocol ConnectPskTlsClient(this TcpClient client, string identity, byte[] psk, Stream stream)
         {
-            TlsPskIdentity ident = new BasicTlsPskIdentity(identity, psk);
-            PskTlsClient pskTlsClient = new PskTlsClient(ident);
-            TlsClientProtocol protocol = new TlsClientProtocol(client.GetStream(), srandom);
+            SimplePskIdentity pskIdentity = new SimplePskIdentity(identity, psk);
+            PiraeusPskTlsClient pskTlsClient = new PiraeusPskTlsClient(pskIdentity);
+            TlsClientProtocol protocol = new TlsClientProtocol(stream, new SecureRandom());
             protocol.Connect(pskTlsClient);
             return protocol;
         }
 
-        public static TlsServerProtocol ConnectPskTlsServer(this TcpClient client, string identity, byte[] psk, SecureRandom srandom)
+        public static TlsServerProtocol ConnectPskTlsServer(this TcpClient client, Dictionary<string, byte[]> psks, Stream stream)
         {
-            TlsServerProtocol tlsProtocol = new TlsServerProtocol(client.GetStream(), srandom);
-            TlsPskIdentityManager manager = new PskIdentityManager(identity, psk);
-            PskTlsServer server = new PskTlsServer(manager);
-            tlsProtocol.Accept(server);
-            return tlsProtocol;
+            TlsPskIdentityManager pskTlsManager = new PskIdentityManager(psks);
+            PskTlsServer server = new PiraeusPskTlsServer(pskTlsManager);
+            TlsServerProtocol protocol = new TlsServerProtocol(stream, new SecureRandom());
+            protocol.Accept(server);
+            return protocol;
+        }      
+
+        public static TlsClientProtocol ConnectPskTlsClientNonBlocking(this TcpClient client, string identity, byte[] psk)
+        {
+            SimplePskIdentity pskIdentity = new SimplePskIdentity(identity, psk);
+            PiraeusPskTlsClient pskTlsClient = new PiraeusPskTlsClient(pskIdentity);
+            TlsClientProtocol protocol = new TlsClientProtocol(new SecureRandom());
+            protocol.Connect(pskTlsClient);
+
+            //while (!pskTlsClient.IsHandshakeComplete)
+            //{
+            //    //System.Threading.Tasks.Task.Delay(1000).Wait();
+            //}
+
+            return protocol;
         }
 
-        public static TlsServerProtocol ConnectPskTlsServer(this TcpClient client, byte[] psk, SecureRandom srandom)
+        public static TlsServerProtocol ConnectPskTlsServerNonBlocking(this TcpClient client, Dictionary<string, byte[]> psks)
         {
-            TlsServerProtocol tlsProtocol = new TlsServerProtocol(client.GetStream(), srandom);
-            TlsPskIdentityManager manager = new PskIdentityManager( psk);
-            PskTlsServer server = new PskTlsServer(manager);
-            tlsProtocol.Accept(server);
-            return tlsProtocol;
+            TlsPskIdentityManager pskTlsManager = new PskIdentityManager(psks);
+            PiraeusPskTlsServer server = new PiraeusPskTlsServer(pskTlsManager);
+            TlsServerProtocol protocol = new TlsServerProtocol(new SecureRandom());
+            protocol.Accept(server);
+
+            //while (!server.IsHandshakeComplete)
+            //{
+            //    System.Threading.Tasks.Task.Delay(1000).Wait();
+            //}
+
+            return protocol;
+
         }
+
     }
 }

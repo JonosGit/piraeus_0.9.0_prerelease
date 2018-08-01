@@ -32,7 +32,7 @@
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll
-/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll
+/r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Gateways\WebGateway\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll
 /r:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Numerics.dll
 /r:C:\_git\dev\piraeus_0.9.0_prerelease\src\Nuget\packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll

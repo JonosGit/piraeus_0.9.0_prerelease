@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AddAzureBlobStorageSubscriptionCmdlet.cs" />
     <Compile Include="AddAzureDataLakeSubscriptionCmdlet.cs" />
+    <Compile Include="AddAzureEventGridSubscriptionCmdlet.cs" />
     <Compile Include="AddAzureEventHubSubscriptionCmdlet.cs" />
     <Compile Include="AddAzureIotHubCommandSubscriptionCmdlet.cs" />
     <Compile Include="AddAzureIotHubDirectMethodSubscription.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="AddAzureCosmosDbSubscriptonCmdlet.cs" />
     <Compile Include="AddAzureServiceBusSubscriptionCmdlet.cs" />
     <Compile Include="AddAzureWebServiceSubscriptionCmdlet.cs" />
+    <Compile Include="AddRedisCacheCmdlet.cs" />
     <Compile Include="AzureBlobType.cs" />
     <Compile Include="CaplLogicalAndCmdlet.cs" />
     <Compile Include="CaplLogicalOrCmdlet.cs" />

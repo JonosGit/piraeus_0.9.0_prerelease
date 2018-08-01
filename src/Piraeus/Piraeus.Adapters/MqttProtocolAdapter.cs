@@ -5,11 +5,13 @@ using Piraeus.Core.Metadata;
 using Piraeus.Grains;
 using Piraeus.Grains.Notifications;
 using SkunkLab.Channels;
+using SkunkLab.Channels.Udp;
 using SkunkLab.Diagnostics.Logging;
 using SkunkLab.Protocols.Mqtt;
 using SkunkLab.Protocols.Mqtt.Handlers;
 using SkunkLab.Security.Authentication;
 using SkunkLab.Security.Identity;
+using SkunkLab.Storage;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +32,9 @@ namespace Piraeus.Adapters
             mqttConfig.IdentityClaimType = config.Identity.Client.IdentityClaimType;
             mqttConfig.Indexes = config.Identity.Client.Indexes;
 
-            session = new MqttSession(mqttConfig);           
+            session = new MqttSession(mqttConfig);
+            userAuditor = new UserAuditor();
+            
 
             Channel = channel;
             Channel.OnClose += Channel_OnClose;
@@ -50,7 +54,8 @@ namespace Piraeus.Adapters
         private OrleansAdapter adapter;
         private PiraeusConfig config;
         private bool forcePerReceiveAuthn;
-
+        private UserAuditor userAuditor;
+        private bool closing;
 
 
         public override IChannel Channel { get; set; }
@@ -65,7 +70,15 @@ namespace Piraeus.Adapters
             session.OnSubscribe += Session_OnSubscribe;
             session.OnUnsubscribe += Session_OnUnsubscribe;
             session.OnDisconnect += Session_OnDisconnect; ;
-            session.OnConnect += Session_OnConnect;            
+            session.OnConnect += Session_OnConnect;
+            session.OnKeepAliveExpiry += Session_OnKeepAliveExpiry;
+        }
+
+        private void Session_OnKeepAliveExpiry(object sender, MqttMessageEventArgs args)
+        {
+            Trace.TraceInformation("Keep alive expired on server.  Closing channel.");          
+            Task task  = this.Channel.CloseAsync();
+            Task.WhenAll(task);
         }
 
 
@@ -76,7 +89,7 @@ namespace Piraeus.Adapters
             {
                 if (disposing)
                 {
-                    adapter.Dispose();
+                    Channel.Dispose();
                     session.Dispose();
                 }
 
@@ -169,10 +182,12 @@ namespace Piraeus.Adapters
 
         private void Session_OnDisconnect(object sender, MqttMessageEventArgs args)
         {
-            Task task = Log.LogErrorAsync("Mqtt Channel {0} OnDisconnect.", Channel.Id);
+            Task task = Log.LogInfoAsync("Mqtt Channel {0} OnDisconnect.", Channel.Id);
             Task.WhenAll(task);
-            Task closeTask = Channel.CloseAsync();
-            Task.WhenAll(closeTask);
+            this.session.Dispose();
+            this.session = null;
+            //Task closeTask = Channel.CloseAsync();
+            //Task.WhenAll(closeTask);
         }
 
         private void Session_OnUnsubscribe(object sender, MqttMessageEventArgs args)
@@ -346,6 +361,11 @@ namespace Piraeus.Adapters
                 if (await adapter.CanPublishAsync(metadata, Channel.IsEncrypted))
                 {
                     EventMessage msg = new EventMessage(mqttUri.ContentType, mqttUri.Resource, ProtocolType.MQTT, message.Encode(), DateTime.UtcNow, metadata.Audit);
+                    if(!string.IsNullOrEmpty(mqttUri.CacheKey))
+                    {
+                        msg.CacheKey = mqttUri.CacheKey;
+                    }
+
                     await adapter.PublishAsync(msg, null);
                 }
                 else
@@ -356,6 +376,7 @@ namespace Piraeus.Adapters
                     }
 
                     await Log.LogWarningAsync("Mqtt message cannot be published because not authorized.");
+                    throw new SecurityException(String.Format("'{0}' not authorized to publish to '{1}'", session.Identity, metadata.ResourceUriString));
                 }
             }
             catch(Exception ex)
@@ -387,6 +408,14 @@ namespace Piraeus.Adapters
                     IdentityDecoder decoder = new IdentityDecoder(session.Config.IdentityClaimType, session.Config.Indexes);
                     session.Identity = decoder.Id;
                     session.Indexes = decoder.Indexes;
+
+                    if(userAuditor.CanAudit)
+                    {
+                        UserLogRecord record = new UserLogRecord(Channel.Id, session.Identity, session.Config.IdentityClaimType, Channel.TypeId, "MQTT", "Granted", DateTime.UtcNow);
+                        //userAuditor.WriteAuditRecord(record);
+                        Task t = userAuditor.WriteAuditRecordAsync(record);
+                        Task.WhenAll(t);
+                    }
                 }
 
                 adapter = new OrleansAdapter(session.Identity, Channel.TypeId, "MQTT");
@@ -405,8 +434,8 @@ namespace Piraeus.Adapters
 
         private void Channel_OnReceive(object sender, ChannelReceivedEventArgs e)
         {
-            LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(100);
-            CancellationTokenSource tokenSource = new CancellationTokenSource();
+            //LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(100);
+            //CancellationTokenSource tokenSource = new CancellationTokenSource();
 
             try
             {
@@ -427,6 +456,15 @@ namespace Piraeus.Adapters
                         IdentityDecoder decoder = new IdentityDecoder(session.Config.IdentityClaimType, session.Config.Indexes);
                         session.Identity = decoder.Id;
                         session.Indexes = decoder.Indexes;
+                        adapter.Identity = decoder.Id;
+
+                        if (userAuditor.CanAudit)
+                        {
+                            UserLogRecord record = new UserLogRecord(Channel.Id, session.Identity, session.Config.IdentityClaimType, Channel.TypeId, "MQTT", "Granted", DateTime.UtcNow);
+                            //userAuditor.WriteAuditRecord(record);
+                            Task t = userAuditor.WriteAuditRecordAsync(record);
+                            Task.WhenAll(t);
+                        }
                     }
                     else
                     {
@@ -554,8 +592,28 @@ namespace Piraeus.Adapters
 
         private void Channel_OnClose(object sender, ChannelCloseEventArgs e)
         {
-            Task task = Log.LogAsync("Channel {0} is closed.", e.ChannelId);
-            Task.WhenAll(task);
+
+            if (!closing)
+            {
+                closing = true;
+
+                Task task = Log.LogAsync("Channel {0} is closed.", e.ChannelId);
+                Task.WhenAll(task);
+
+                if (userAuditor.CanAudit)
+                {
+
+                    UserLogRecord record = userAuditor.GetAuditRecord(Channel.Id, session.Identity);
+                    if (record != null)
+                    {
+                        record.LogoutTime = DateTime.UtcNow;
+                        Task t = userAuditor.WriteAuditRecordAsync(record);
+                        Task.WhenAll(t);
+                        //userAuditor.WriteAuditRecord(record);
+                    }
+                    
+                }
+            }
 
             OnClose?.Invoke(this, new ProtocolAdapterCloseEventArgs(e.ChannelId));
         }

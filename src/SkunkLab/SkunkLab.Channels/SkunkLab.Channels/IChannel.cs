@@ -16,6 +16,7 @@ namespace SkunkLab.Channels
         event EventHandler<ChannelErrorEventArgs> OnError;
         event EventHandler<ChannelStateEventArgs> OnStateChange; 
         
+        bool RequireBlocking { get; }
 
         bool IsConnected { get; }
         string Id { get; }
